@@ -3,72 +3,1045 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>欢迎来到我的网站</title>
-    <link rel="stylesheet" href="style.css">
+    <title>探索中国 - 地区旅游指南</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #3498db;
+            --secondary: #2c3e50;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #1a2a6c);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: var(--light);
+            line-height: 1.6;
+        }
+        
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* 头部样式 */
+        header {
+            background-color: rgba(44, 62, 80, 0.95);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--light);
+        }
+        
+        .logo i {
+            color: var(--accent);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+        
+        nav a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 8px 15px;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        nav a:hover, nav a.active {
+            background-color: var(--accent);
+            color: white;
+        }
+        
+        /* 英雄区域 */
+        .hero {
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 50px 20px;
+            background: rgba(0, 0, 0, 0.4);
+            margin-bottom: 50px;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            animation: fadeInDown 1s ease;
+        }
+        
+        .hero p {
+            font-size: 1.5rem;
+            max-width: 800px;
+            margin-bottom: 30px;
+            animation: fadeInUp 1s ease;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+        
+        .cta-button:hover {
+            background-color: #c0392b;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* 地区导航 */
+        .region-nav {
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+            margin-bottom: 50px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+        }
+        
+        .region-nav h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--light);
+            font-size: 2.2rem;
+        }
+        
+        .regions {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 0 20px;
+        }
+        
+        .region-card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            width: 180px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+        }
+        
+        .region-card:hover {
+            transform: translateY(-10px) scale(1.05);
+            background: white;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .region-card i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .region-card h3 {
+            color: var(--dark);
+            font-size: 1.3rem;
+        }
+        
+        /* 内容区域 */
+        .content-section {
+            display: none;
+            padding: 50px 0;
+            min-height: 70vh;
+        }
+        
+        .content-section.active {
+            display: block;
+            animation: fadeIn 0.8s ease;
+        }
+        
+        .region-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .region-header h2 {
+            font-size: 2.5rem;
+            color: var(--light);
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .region-header p {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            color: #e0e0e0;
+        }
+        
+        .region-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .text-content {
+            flex: 1;
+            min-width: 300px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+        }
+        
+        .text-content h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--light);
+        }
+        
+        .text-content p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        
+        .highlight {
+            color: var(--accent);
+            font-weight: 700;
+        }
+        
+        .image-gallery {
+            flex: 1;
+            min-width: 300px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .gallery-item {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            position: relative;
+            height: 250px;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-item .caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+        
+        /* 页脚 */
+        footer {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 40px 0 20px;
+            margin-top: 50px;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .footer-section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--light);
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent);
+        }
+        
+        .footer-section p, .footer-section li {
+            margin-bottom: 10px;
+            color: #bbb;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section a {
+            color: #bbb;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-section a:hover {
+            color: var(--accent);
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+        
+        .social-icons a:hover {
+            background-color: var(--accent);
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #999;
+            font-size: 0.9rem;
+        }
+        
+        /* 动画 */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(231, 76, 60, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(231, 76, 60, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(231, 76, 60, 0); }
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .region-card {
+                width: calc(50% - 20px);
+            }
+            
+            .region-content {
+                flex-direction: column;
+            }
+        }
+    </style>
 </head>
 <body>
+    <!-- 头部导航 -->
     <header>
         <div class="container">
-            <h1>创意设计工作室</h1>
-            <p>为您的业务提供专业解决方案</p>
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-globe-asia"></i>
+                    <span>浙江新闻网</span>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#" class="nav-link active" data-target="home">首页</a></li>
+                        <li><a href="#" class="nav-link" data-target="beijing">北京</a></li>
+                        <li><a href="#" class="nav-link" data-target="shanghai">上海</a></li>
+                        <li><a href="#" class="nav-link" data-target="guangzhou">广州</a></li>
+                        <li><a href="#" class="nav-link" data-target="chengdu">成都</a></li>
+                        <li><a href="#" class="nav-link" data-target="chongqing">重庆</a></li>
+                        <li><a href="#" class="nav-link" data-target="neimenggu">内蒙古</a></li>
+                        <li><a href="#" class="nav-link" data-target="jilin">吉林</a></li>
+                        <li><a href="#" class="nav-link" data-target="liaolin">辽林</a></li>
+                        <li><a href="#" class="nav-link" data-target="wuhan">武汉</a></li>
+                        <li><a href="#" class="nav-link" data-target="heilongjiang">黑龙江</a></li>
+                    </ul>
+                </nav>
+            </div>
         </div>
     </header>
 
-    <nav>
-        <div class="container">
-            <ul>
-                <li><a href="#" class="active">首页</a></li>
-                <li><a href="#">服务</a></li>
-                <li><a href="#">案例</a></li>
-                <li><a href="#">关于我们</a></li>
-                <li><a href="#">联系方式</a></li>
-            </ul>
+    <!-- 首页内容 -->
+    <section id="home" class="content-section active">
+        <div class="hero">
+            <h1>浙江临海老板“百万账户解冻就发薪”成空话！员工九万六千元血汗</h1>
+            <p>在当下的经济浪潮中，企业的兴衰起伏时刻牵动着众多劳动者的心弦。近日，浙江省临海市凯源休闲用品有限公司便陷入了申请破产的漩涡，正处于紧张的清算程序之中。而在这一过程中，员工冯先生的遭遇令人揪心，他被公司拖欠工资共计96029元，在维护自身权益的道路上艰难前行。</p>
+    
         </div>
-    </nav>
 
-    <section class="hero">
         <div class="container">
-            <h2>创新的数字解决方案</h2>
-            <p>我们帮助企业在数字时代脱颖而出</p>
-            <button id="ctaButton">获取方案</button>
+            <div class="region-nav">
+                <h2><i class="fas fa-map-marked-alt"></i> 探索热门地区</h2>
+                <div class="regions">
+                    <div class="region-card" data-target="beijing">
+                        <i class="fas fa-landmark"></i>
+                        <h3>北京</h3>
+                    </div>
+                    <div class="region-card" data-target="shanghai">
+                        <i class="fas fa-city"></i>
+                        <h3>上海</h3>
+                    </div>
+                    <div class="region-card" data-target="guangzhou">
+                        <i class="fas fa-utensils"></i>
+                        <h3>广州</h3>
+                    </div>
+                    <div class="region-card" data-target="chengdu">
+                        <i class="fas fa-paw"></i>
+                        <h3>成都</h3>
+                    </div>
+                   
+                    <div class="region-card" data-target="chongqing">
+                        <i class="fas fa-umbrella-beach"></i>
+                        <h3>重庆</h3>
+                    </div>
+                    <div class="region-card" data-target="neimenggu">
+                        <i class="fas fa-umbrella-beach"></i>
+                        <h3>内蒙古</h3>
+                    </div>
+                    <div class="region-card" data-target="jilin">
+                        <i class="fas fa-umbrella-beach"></i>
+                        <h3>吉林</h3>
+                    </div>
+                    <div class="region-card" data-target="liaolin">
+                        <i class="fas fa-umbrella-beach"></i>
+                        <h3>辽林</h3>
+                    </div>
+                    <div class="region-card" data-target="heilongjiang">
+                        <i class="fas fa-umbrella-beach"></i>
+                        <h3>武汉</h3>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <section class="features">
+    <!-- 北京地区 -->
+    <section id="beijing" class="content-section">
         <div class="container">
-            <div class="feature">
-                <h3>网页设计</h3>
-                <p>响应式设计，适配所有设备</p>
+            <div class="region-header">
+                <h2><i class="fas fa-landmark"></i> 北京 - 千年古都</h2>
+                <p>作为中国的首都，北京融合了悠久的历史与现代化都市的活力，拥有丰富的历史遗迹和文化景观。</p>
             </div>
-            <div class="feature">
-                <h3>品牌策略</h3>
-                <p>打造独特的品牌形象</p>
-            </div>
-            <div class="feature">
-                <h3>数字营销</h3>
-                <p>提升您的在线影响力</p>
+            
+            <div class="region-content">
+                <div class="text-content">
+                    <h3>帝都风采</h3>
+                    <p>北京是中国的政治、文化和国际交往中心，拥有3000多年的建城史和850多年的建都史。</p>
+                    <p><span class="highlight">故宫博物院</span> - 世界上现存规模最大、保存最完整的木质结构古建筑群，展示了明清两代的皇家生活。</p>
+                    <p><span class="highlight">长城</span> - 世界新七大奇迹之一，八达岭长城是游客最多的长城段落。</p>
+                    <p><span class="highlight">天坛</span> - 明清两代帝王祭天、祈谷的场所，建筑精美，具有极高的艺术价值。</p>
+                    <p><span class="highlight">798艺术区</span> - 由旧工厂改造的现代艺术中心，展示了中国当代艺术的活力。</p>
+                    <p>北京烤鸭是必尝的美食，全聚德和便宜坊是最著名的烤鸭店。</p>
+                </div>
+                
+                <div class="image-gallery">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1600804340584-c7db2eacf0bf?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="故宫">
+                        <div class="caption">故宫博物院</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1542662565-7e4b66bae529?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="长城">
+                        <div class="caption">八达岭长城</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1593693392686-a8a1d5dffa0e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="天坛">
+                        <div class="caption">天坛公园</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1601134467661-3a775e1116d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="北京烤鸭">
+                        <div class="caption">北京烤鸭</div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <section class="contact">
+    <!-- 上海地区 -->
+    <section id="shanghai" class="content-section">
         <div class="container">
-            <h2>联系我们</h2>
-            <form id="contactForm">
-                <input type="text" placeholder="您的姓名" required>
-                <input type="email" placeholder="电子邮箱" required>
-                <textarea placeholder="您的需求..." required></textarea>
-                <button type="submit">提交</button>
-            </form>
+            <div class="region-header">
+                <h2><i class="fas fa-city"></i> 上海 - 东方巴黎</h2>
+                <p>作为中国的经济中心，上海融合了东西方文化，拥有独特的现代都市风貌和丰富的历史遗产。</p>
+            </div>
+            
+            <div class="region-content">
+                <div class="text-content">
+                    <h3>魔都魅力</h3>
+                    <p>上海被誉为"东方巴黎"，是中国最国际化的城市，也是全球重要的金融、贸易和航运中心。</p>
+                    <p><span class="highlight">外滩</span> - 欣赏黄浦江两岸的万国建筑博览群和陆家嘴现代摩天大楼的完美结合。</p>
+                    <p><span class="highlight">南京路步行街</span> - 中国最著名的商业街，购物天堂，拥有百年历史。</p>
+                    <p><span class="highlight">豫园</span> - 江南古典园林的代表作，园内亭台楼阁、假山水榭，布局精巧。</p>
+                    <p><span class="highlight">迪士尼乐园</span> - 中国大陆首座迪士尼主题乐园，适合家庭游玩。</p>
+                    <p>上海的小笼包、生煎包和本帮菜是必尝的特色美食。</p>
+                </div>
+                
+                <div class="image-gallery">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1503919545889-aef636e10ad4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="外滩">
+                        <div class="caption">外滩夜景</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1545912452-8aea7e25a3d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="陆家嘴">
+                        <div class="caption">陆家嘴金融区</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1544986581-efac024faf62?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="豫园">
+                        <div class="caption">豫园</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="小笼包">
+                        <div class="caption">上海小笼包</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+        <!-- 广州地区 -->
+    <section id="guangzhou" class="content-section">
+        <div class="container">
+            <div class="region-header">
+                <h2><i class="fas fa-city"></i> 上海 - 东方巴黎</h2>
+                <p>作为中国的经济中心，上海融合了东西方文化，拥有独特的现代都市风貌和丰富的历史遗产。</p>
+            </div>
+            
+            <div class="region-content">
+                <div class="text-content">
+                    <h3>雾都魅力</h3>
+                    <p>上海被誉为"东方巴黎"，是中国最国际化的城市，也是全球重要的金融、贸易和航运中心。</p>
+                    <p><span class="highlight">外滩</span> - 欣赏黄浦江两岸的万国建筑博览群和陆家嘴现代摩天大楼的完美结合。</p>
+                    <p><span class="highlight">南京路步行街</span> - 中国最著名的商业街，购物天堂，拥有百年历史。</p>
+                    <p><span class="highlight">豫园</span> - 江南古典园林的代表作，园内亭台楼阁、假山水榭，布局精巧。</p>
+                    <p><span class="highlight">迪士尼乐园</span> - 中国大陆首座迪士尼主题乐园，适合家庭游玩。</p>
+                    <p>上海的小笼包、生煎包和本帮菜是必尝的特色美食。</p>
+                </div>
+                
+                <div class="image-gallery">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1503919545889-aef636e10ad4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="外滩">
+                        <div class="caption">外滩夜景</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1545912452-8aea7e25a3d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="陆家嘴">
+                        <div class="caption">陆家嘴金融区</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1544986581-efac024faf62?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="豫园">
+                        <div class="caption">豫园</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="小笼包">
+                        <div class="caption">上海小笼包</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- 成都地区 -->
+     <section id="chengdu" class="content-section">
+        <div class="container">
+            <div class="region-header">
+                <h2><i class="fas fa-city"></i> 上海 - 东方巴黎</h2>
+                <p>作为中国的经济中心，上海融合了东西方文化，拥有独特的现代都市风貌和丰富的历史遗产。</p>
+            </div>
+            
+            <div class="region-content">
+                <div class="text-content">
+                    <h3>雾都魅力</h3>
+                    <p>成都市（Chengdu City），简称“蓉”，别称蓉城、锦城，四川省辖地级市、省会、副省级市、超大城市，地处中国西南地区、四川盆地西部、青藏高原东缘，总面积14335平方千米，通用语言为西南官话。 [317-318]截至2025年3月，成都市下辖12个区、3个县、代管5个县级市。截至2024年末，成都市常住人口2147.4万人，常住人口城镇化率80.8% [366]。
+                       成都市地势由西北向东南倾斜，西部以深丘和山地为主，东部主要由平原、台地和部分低山丘陵组成，是成都平原的腹心地带，属亚热带季风气候区，热量充足，雨量丰富，四季分明，雨热同期。早在距今约4500年至3700年以前，成都平原已出现被后世称为“宝墩文化”的一系列古蜀先民聚落中心。 [328]前316年，秦灭蜀，始设蜀郡并成都县，为蜀郡治所。前311年，修筑大城和少城，被后世公认为是有文献记载的成都建城标志。1921年，始设市政筹备处，1928年，成都正式设市。 [</p>
+                    <p><span class="highlight">都江堰</span> -都江堰，位于四川省成都市都江堰市城西，坐落在成都平原西部的岷江上， [14]是由渠首枢纽（鱼嘴、飞沙堰、宝瓶口）、灌区各级引水渠道，各类工程建筑物和大中小型水库和塘堰等所构成的一个庞大的工程系统， [8]渠首占地面积200余亩。 [3]它担负着四川盆地中西部地区7市（地）40县（市、区）1130万余亩农田的灌溉、成都市多家重点企业和城市生活供水，以及防洪、发电、漂水、水产、养殖、林果、旅游、环保等多项目标综合服务，是四川省国民经济发展不可替代的水利基础设施</p>
+                    <p><span class="highlight">青城山</span> - 青城山（Mount Qingcheng），世界文化遗产青城山-都江堰的主体景区、全国重点文物保护单位、国家重点风景名胜区、国家AAAAA级旅游景区、全真龙门派圣地，十大洞天之一，中国四大道教名山之一，五大仙山之一，成都十景之一。 [1]</p>
+                    <p><span class="highlight">杜甫草堂</span> - 杜甫草堂，是中国唐代大诗人杜甫流寓成都时的故居，位于四川省成都市青羊区青华路37号 [16]。杜甫先后在此居住近四年，创作诗歌240余首。唐末诗人韦庄寻得草堂遗址，重结茅屋，使之得以保存，宋元明清历代都有修葺扩建。</p>
+                    <p><span class="highlight">武侯祠</span> - 武侯祠（Wuhou Shrine），位于四川省成都市武侯区武侯祠大街231号，始建于蜀汉章武元年（221年），原是纪念诸葛亮的专祠，亦称孔明庙、诸葛祠、丞相祠等，后合并为君臣合祀祠庙 </p>
+                
+                </div>
+                
+                <div class="image-gallery">
+                    <div class="gallery-item">
+                        <img src="https://img0.baidu.com/it/u=1971817563,531281102&fm=253&fmt=auto&app=138&f=JPEG?w=800&h=1422" alt="都江堰">
+                        <div class="caption">都江堰</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://img2.baidu.com/it/u=130477783,3340912014&fm=253&fmt=auto&app=138&f=JPEG?w=800&h=1333" alt="青城山">
+                        <div class="caption">青城山</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://img0.baidu.com/it/u=608217289,4290815053&fm=253&fmt=auto&app=138&f=JPEG?w=722&h=832" alt="杜甫草堂">
+                        <div class="caption">杜甫草堂</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://img0.baidu.com/it/u=1922494900,2163849598&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=751" alt="武侯祠">
+                        <div class="caption">武侯祠</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<!-- 重庆地区 -->
+     <section id="chongqing" class="content-section">
+        <div class="container">
+            <div class="region-header">
+                <h2><i class="fas fa-city"></i> 重庆 - 雾都</h2>
+                <p>重庆市（Chongqing City），简称“渝”，别称山城、江城，是中华人民共和国直辖市和超大城市，国家中心城市， [1] [247]国务院批复确定的中国重要的中心城市，国家历史文化名城和国际性综合交通枢纽城市，是全国先进制造业基地、西部科技创新中心和对外开放门户、长江上游航运中心。 [1]西部金融中心， [240] [246] [248]国际消费中心城市， [239]辖38个区县， [163]总面积8.24万平方千米， [28]2024年末，重庆市常住人口3190.47万。 [259]
+                   重庆市地处中国西南地区，是全国唯一兼具水、陆、空、生产服务、商贸服务“五型”国家物流枢纽的城市， [2]在西部大开发中发挥支撑作用，在“一带一路”中发挥带动作用，在长江经济带中发挥示范作用； [3-4]设有国家级武陵山区（渝东南）土家族苗族文化生态保护区 [265]；拥有世界文化遗产大足石刻、世界自然遗产武隆喀斯特和南川金佛山等景观。
+                   重庆市是巴渝文化发祥地，有三千余年建城史， [144]自古被称为“天生重庆”。 [156]宋光宗先封恭王再即帝位，升恭州为重庆府，由此得名。夏商巴国在此建都， [145]元末大夏在此建国。 [195]清末重庆开埠及国民政府迁都重庆，使重庆成为近代中国大后方政治军事经济文化中心，红岩精神起源地。 [144]新中国初为西南大区驻地及直辖市，1997年又恢复为直辖市。
+                   重庆市是中国山地城市典范、 [144]世界温泉之都、 [196]中国火锅之都。 [197]为成渝金融法院驻地， [191]中欧班列首发城市， [192]截至2022年，集聚各类研发平台964家； [193-194]驻渝高校73所。 [31]
+                   2024年，重庆市实现地区生产总值32193.15亿元，比上年增长5.7%。 [259]</p>
+            </div>
+            
+            <div class="region-content">
+                <div class="text-content">
+                    <h3>雾都魅力</h3>
+                    <p>重庆市地处中国西南地区，是全国唯一兼具水、陆、空、生产服务、商贸服务“五型”国家物流枢纽的城市， [2]在西部大开发中发挥支撑作用，在“一带一路”中发挥带动作用，在长江经济带中发挥示范作用； [3-4]设有国家级武陵山区（渝东南）土家族苗族文化生态保护区 [265]；拥有世界文化遗产大足石刻、世界自然遗产武隆喀斯特和南川金佛山等景观。</p>
+                    <p><span class="highlight">洪崖洞</span> -中国重庆市国家AAAA级旅游景区。</p>
+                    <p><span class="highlight">大足石刻</span> - 大足石刻最初开凿于初唐永徽年间，历经晚唐、五代，盛于两宋，明清时期亦有所增刻，最终形成了一处规模庞大，集中国石刻艺术精华之大成的石刻群，堪称中国晚期石窟艺术的代表。</p>
+                    <p><span class="highlight">武隆喀斯特旅游区</span> - 喀斯特旅游区，是位于重庆市武隆区境内的旅游景区，拥有罕见的喀斯特自然景观，包括溶洞、天坑、地缝、峡谷、峰丛、高山草原等，形态全面；兼具丰富多彩的度假、休闲、娱乐、运动项目，以及土家族、苗族、仡佬族等少数民族独特的民俗风情。2011年，它被评为国家AAAAA级旅游区。 [1]武隆喀斯特旅游区包括重庆武隆旅游景点天生三桥、仙女山、芙蓉洞这三部分。</p>
+                    <p><span class="highlight">长江三峡</span> - 重庆市巫山县境内，有大宁河小三峡、马渡河小小三峡。长江沿线重庆境内，有“水下碑林”白鹤梁，“东方神曲之乡”丰都鬼城，建筑风格奇特的石宝寨、“巴蜀胜境”张飞庙、蜀汉皇帝刘备的托孤堂、龙骨坡巫山文化遗址等景观。</p>
+        
+                </div>
+                
+                <div class="image-gallery">
+                    <div class="gallery-item">
+                        <img src="https://image.cqrb.cn/d/file/news/image/uploadImage/cqrb/2024-02-15/202402152227_002612.jpg?x-oss-process=image/resize,w_1000,limit_0" alt="洪崖洞">
+                        <div class="caption">洪崖洞</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://img0.baidu.com/it/u=1217957137,923307610&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=653" alt="大足石刻">
+                        <div class="caption">大足石刻</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://pic.rmb.bdstatic.com/bjh/news/2d7f3902d42791a1b379d7992dbf0dae.png" alt="武隆喀斯特旅游区">
+                        <div class="caption">武隆喀斯特旅游区</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://img2.baidu.com/it/u=2787793146,2103706745&fm=253&fmt=auto&app=120&f=JPEG?w=500&h=890" alt="长江三峡">
+                        <div class="caption">长江三峡</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- 内蒙古地区 -->
+     <section id="neimenggu" class="content-section">
+        <div class="container">
+            <div class="region-header">
+                <h2><i class="fas fa-city"></i> 上海 - 东方巴黎</h2>
+                <p>作为中国的经济中心，上海融合了东西方文化，拥有独特的现代都市风貌和丰富的历史遗产。</p>
+            </div>
+            
+            <div class="region-content">
+                <div class="text-content">
+                    <h3>雾都魅力</h3>
+                    <p>上海被誉为"东方巴黎"，是中国最国际化的城市，也是全球重要的金融、贸易和航运中心。</p>
+                    <p><span class="highlight">外滩</span> - 欣赏黄浦江两岸的万国建筑博览群和陆家嘴现代摩天大楼的完美结合。</p>
+                    <p><span class="highlight">南京路步行街</span> - 中国最著名的商业街，购物天堂，拥有百年历史。</p>
+                    <p><span class="highlight">豫园</span> - 江南古典园林的代表作，园内亭台楼阁、假山水榭，布局精巧。</p>
+                    <p><span class="highlight">迪士尼乐园</span> - 中国大陆首座迪士尼主题乐园，适合家庭游玩。</p>
+                    <p>上海的小笼包、生煎包和本帮菜是必尝的特色美食。</p>
+                </div>
+                
+                <div class="image-gallery">
+                    <div class="gallery-item">
+                        <img src="https://q7.itc.cn/q_70/images01/20250129/ca196653d52b4c25a462a5e1d6c29490.jpeg" alt="重庆">
+                        <div class="caption">外滩夜景</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1545912452-8aea7e25a3d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="陆家嘴">
+                        <div class="caption">陆家嘴金融区</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1544986581-efac024faf62?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="豫园">
+                        <div class="caption">豫园</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="小笼包">
+                        <div class="caption">上海小笼包</div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
+    <!-- 吉林地区 -->
+     <section id="jilin" class="content-section">
+        <div class="container">
+            <div class="region-header">
+                <h2><i class="fas fa-city"></i> 上海 - 东方巴黎</h2>
+                <p>作为中国的经济中心，上海融合了东西方文化，拥有独特的现代都市风貌和丰富的历史遗产。</p>
+            </div>
+            
+            <div class="region-content">
+                <div class="text-content">
+                    <h3>雾都魅力</h3>
+                    <p>上海被誉为"东方巴黎"，是中国最国际化的城市，也是全球重要的金融、贸易和航运中心。</p>
+                    <p><span class="highlight">外滩</span> - 欣赏黄浦江两岸的万国建筑博览群和陆家嘴现代摩天大楼的完美结合。</p>
+                    <p><span class="highlight">南京路步行街</span> - 中国最著名的商业街，购物天堂，拥有百年历史。</p>
+                    <p><span class="highlight">豫园</span> - 江南古典园林的代表作，园内亭台楼阁、假山水榭，布局精巧。</p>
+                    <p><span class="highlight">迪士尼乐园</span> - 中国大陆首座迪士尼主题乐园，适合家庭游玩。</p>
+                    <p>上海的小笼包、生煎包和本帮菜是必尝的特色美食。</p>
+                </div>
+                
+                <div class="image-gallery">
+                    <div class="gallery-item">
+                        <img src="https://q7.itc.cn/q_70/images01/20250129/ca196653d52b4c25a462a5e1d6c29490.jpeg" alt="重庆">
+                        <div class="caption">外滩夜景</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1545912452-8aea7e25a3d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="陆家嘴">
+                        <div class="caption">陆家嘴金融区</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1544986581-efac024faf62?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="豫园">
+                        <div class="caption">豫园</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="小笼包">
+                        <div class="caption">上海小笼包</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 辽林地区 -->
+     <section id="liaolin" class="content-section">
+        <div class="container">
+            <div class="region-header">
+                <h2><i class="fas fa-city"></i> 上海 - 东方巴黎</h2>
+                <p>作为中国的经济中心，上海融合了东西方文化，拥有独特的现代都市风貌和丰富的历史遗产。</p>
+            </div>
+            
+            <div class="region-content">
+                <div class="text-content">
+                    <h3>雾都魅力</h3>
+                    <p>上海被誉为"东方巴黎"，是中国最国际化的城市，也是全球重要的金融、贸易和航运中心。</p>
+                    <p><span class="highlight">外滩</span> - 欣赏黄浦江两岸的万国建筑博览群和陆家嘴现代摩天大楼的完美结合。</p>
+                    <p><span class="highlight">南京路步行街</span> - 中国最著名的商业街，购物天堂，拥有百年历史。</p>
+                    <p><span class="highlight">豫园</span> - 江南古典园林的代表作，园内亭台楼阁、假山水榭，布局精巧。</p>
+                    <p><span class="highlight">迪士尼乐园</span> - 中国大陆首座迪士尼主题乐园，适合家庭游玩。</p>
+                    <p>上海的小笼包、生煎包和本帮菜是必尝的特色美食。</p>
+                </div>
+                
+                <div class="image-gallery">
+                    <div class="gallery-item">
+                        <img src="https://q7.itc.cn/q_70/images01/20250129/ca196653d52b4c25a462a5e1d6c29490.jpeg" alt="重庆">
+                        <div class="caption">外滩夜景</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1545912452-8aea7e25a3d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="陆家嘴">
+                        <div class="caption">陆家嘴金融区</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1544986581-efac024faf62?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="豫园">
+                        <div class="caption">豫园</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="小笼包">
+                        <div class="caption">上海小笼包</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 武汉地区 -->
+     <section id="wuhan" class="content-section">
+        <div class="container">
+            <div class="region-header">
+                <h2><i class="fas fa-city"></i> 上海 - 东方巴黎</h2>
+                <p>作为中国的经济中心，上海融合了东西方文化，拥有独特的现代都市风貌和丰富的历史遗产。</p>
+            </div>
+            
+            <div class="region-content">
+                <div class="text-content">
+                    <h3>雾都魅力</h3>
+                    <p>上海被誉为"东方巴黎"，是中国最国际化的城市，也是全球重要的金融、贸易和航运中心。</p>
+                    <p><span class="highlight">外滩</span> - 欣赏黄浦江两岸的万国建筑博览群和陆家嘴现代摩天大楼的完美结合。</p>
+                    <p><span class="highlight">南京路步行街</span> - 中国最著名的商业街，购物天堂，拥有百年历史。</p>
+                    <p><span class="highlight">豫园</span> - 江南古典园林的代表作，园内亭台楼阁、假山水榭，布局精巧。</p>
+                    <p><span class="highlight">迪士尼乐园</span> - 中国大陆首座迪士尼主题乐园，适合家庭游玩。</p>
+                    <p>上海的小笼包、生煎包和本帮菜是必尝的特色美食。</p>
+                </div>
+                
+                <div class="image-gallery">
+                    <div class="gallery-item">
+                        <img src="https://q7.itc.cn/q_70/images01/20250129/ca196653d52b4c25a462a5e1d6c29490.jpeg" alt="重庆">
+                        <div class="caption">外滩夜景</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1545912452-8aea7e25a3d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="陆家嘴">
+                        <div class="caption">陆家嘴金融区</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1544986581-efac024faf62?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="豫园">
+                        <div class="caption">豫园</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="小笼包">
+                        <div class="caption">上海小笼包</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+     <!-- 黑龙江地区 -->
+     <section id="heilongjiang" class="content-section">
+        <div class="container">
+            <div class="region-header">
+                <h2><i class="fas fa-city"></i> 上海 - 东方巴黎</h2>
+                <p>作为中国的经济中心，上海融合了东西方文化，拥有独特的现代都市风貌和丰富的历史遗产。</p>
+            </div>
+            
+            <div class="region-content">
+                <div class="text-content">
+                    <h3>雾都魅力</h3>
+                    <p>上海被誉为"东方巴黎"，是中国最国际化的城市，也是全球重要的金融、贸易和航运中心。</p>
+                    <p><span class="highlight">外滩</span> - 欣赏黄浦江两岸的万国建筑博览群和陆家嘴现代摩天大楼的完美结合。</p>
+                    <p><span class="highlight">南京路步行街</span> - 中国最著名的商业街，购物天堂，拥有百年历史。</p>
+                    <p><span class="highlight">豫园</span> - 江南古典园林的代表作，园内亭台楼阁、假山水榭，布局精巧。</p>
+                    <p><span class="highlight">迪士尼乐园</span> - 中国大陆首座迪士尼主题乐园，适合家庭游玩。</p>
+                    <p>上海的小笼包、生煎包和本帮菜是必尝的特色美食。</p>
+                </div>
+                
+                <div class="image-gallery">
+                    <div class="gallery-item">
+                        <img src="https://q7.itc.cn/q_70/images01/20250129/ca196653d52b4c25a462a5e1d6c29490.jpeg" alt="重庆">
+                        <div class="caption">外滩夜景</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1545912452-8aea7e25a3d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="陆家嘴">
+                        <div class="caption">陆家嘴金融区</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1544986581-efac024faf62?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="豫园">
+                        <div class="caption">豫园</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="小笼包">
+                        <div class="caption">上海小笼包</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
     <footer>
         <div class="container">
-            <p>&copy; 2023 创意设计工作室. 保留所有权利</p>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>关于我们</h3>
+                    <p>探索中国致力于向世界展示中国各地的自然风光、文化遗产和现代发展，帮助游客深入了解这个迷人的国度。</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-weibo"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>热门目的地</h3>
+                    <ul>
+                        <li><a href="#" data-target="beijing">北京</a></li>
+                        <li><a href="#" data-target="shanghai">上海</a></li>
+                        <li><a href="#" data-target="guangzhou">广州</a></li>
+                        <li><a href="#" data-target="chengdu">成都</a></li>
+                        <li><a href="#" data-target="sanya">重庆</a></li>
+                        <li><a href="#" data-target="sanya">天津</a></li>
+                        <li><a href="#" data-target="sanya">河北</a></li>
+                        <li><a href="#" data-target="sanya">吉林</a></li>
+                        <li><a href="#" data-target="sanya">浙江</a></li>
+                        <li><a href="#" data-target="sanya">山东</a></li>
+                        <li><a href="#" data-target="sanya">广东</a></li>
+                        <li><a href="#" data-target="sanya">广西</a></li>
+                        <li><a href="#" data-target="sanya">云南</a></li>
+                        <li><a href="#" data-target="sanya">海南</a></li>
+                        <li><a href="#" data-target="sanya">黑龙江</a></li>
+                        <li><a href="#" data-target="sanya">内蒙古</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>联系我们</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 北京市朝阳区建国路88号</p>
+                    <p><i class="fas fa-phone"></i> +86 10 8888 7777</p>
+                    <p><i class="fas fa-envelope"></i> info@explorechina.com</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 浙江新闻网</p>
+            </div>
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        // 页面导航功能
+        document.addEventListener('DOMContentLoaded', function() {
+            // 获取所有导航链接
+            const navLinks = document.querySelectorAll('.nav-link, .region-card, .footer-section a[data-target]');
+            
+            // 添加点击事件监听器
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // 获取目标区域
+                    const targetId = this.getAttribute('data-target');
+                    if (!targetId) return;
+                    
+                    // 更新导航激活状态
+                    document.querySelectorAll('.nav-link').forEach(nav => {
+                        nav.classList.remove('active');
+                    });
+                    
+                    if (this.classList.contains('nav-link')) {
+                        this.classList.add('active');
+                    } else {
+                        // 对于地区卡片，找到对应的导航链接并激活
+                        const correspondingNav = document.querySelector(`.nav-link[data-target="${targetId}"]`);
+                        if (correspondingNav) {
+                            correspondingNav.classList.add('active');
+                        }
+                    }
+                    
+                    // 隐藏所有内容区域
+                    document.querySelectorAll('.content-section').forEach(section => {
+                        section.classList.remove('active');
+                    });
+                    
+                    // 显示目标区域
+                    document.getElementById(targetId).classList.add('active');
+                    
+                    // 滚动到顶部
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            });
+            
+            // 首页CTA按钮点击事件
+            document.querySelector('.cta-button').addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // 滚动到地区导航
+                document.querySelector('.region-nav').scrollIntoView({ 
+                    behavior: 'smooth' 
+                });
+            });
+        });
+    </script>
 </body>
 </html>
