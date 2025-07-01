@@ -3,1064 +3,1289 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>河北邢台新闻网</title>
+    <title>河北邢台新闻网 - 权威、及时、全面的新闻资讯平台</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        :root {
-            --primary: #3498db;
-            --secondary: #2c3e50;
-            --accent: #e74c3c;
-            --light: #ecf0f1;
-            --dark: #2c3e50;
-            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            font-family: "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
         }
         
         body {
-            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #1a2a6c);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
-            color: var(--light);
+            background-color: #f5f5f5;
+            color: #333;
             line-height: 1.6;
         }
         
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        /* 顶部导航栏 */
+        .top-bar {
+            background-color: #0a4a9d;
+            height: 36px;
+            color: #fff;
+            font-size: 14px;
         }
         
-        .container {
-            max-width: 1200px;
+        .top-container {
+            width: 1200px;
+            max-width: 95%;
             margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        /* 头部样式 */
-        header {
-            background-color: rgba(44, 62, 80, 0.95);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: var(--shadow);
-        }
-        
-        .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 0;
+            height: 100%;
+        }
+        
+        .top-links a {
+            color: #fff;
+            text-decoration: none;
+            margin-right: 20px;
+            transition: opacity 0.3s;
+        }
+        
+        .top-links a:hover {
+            opacity: 0.8;
+        }
+        
+        .user-actions a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 15px;
+        }
+        
+        .user-actions a i {
+            margin-right: 5px;
+        }
+        
+        /* 头部区域 */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-container {
+            width: 1200px;
+            max-width: 95%;
+            margin: 0 auto;
+            padding: 20px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
         }
         
         .logo {
             display: flex;
             align-items: center;
-            gap: 10px;
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--light);
         }
         
-        .logo i {
-            color: var(--accent);
+        .logo img {
+            height: 60px;
         }
         
-        nav ul {
+        .logo-text {
+            margin-left: 15px;
+        }
+        
+        .logo-text h1 {
+            color: #d40000;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        
+        .logo-text p {
+            color: #0a4a9d;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+        
+        .search-bar {
+            display: flex;
+            width: 320px;
+            margin-top: 10px;
+        }
+        
+        .search-bar input {
+            flex: 1;
+            height: 40px;
+            padding: 0 15px;
+            border: 2px solid #d40000;
+            border-right: none;
+            outline: none;
+            font-size: 14px;
+        }
+        
+        .search-bar button {
+            width: 60px;
+            background: #d40000;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+        }
+        
+        /* 主导航 */
+        .main-nav {
+            background: #d40000;
+            height: 50px;
+        }
+        
+        .nav-container {
+            width: 1200px;
+            max-width: 95%;
+            margin: 0 auto;
+            height: 100%;
+        }
+        
+        .nav-links {
             display: flex;
             list-style: none;
-            gap: 25px;
+            height: 100%;
         }
         
-        nav a {
-            color: var(--light);
-            text-decoration: none;
-            font-weight: 600;
-            padding: 8px 15px;
-            border-radius: 30px;
-            transition: all 0.3s ease;
+        .nav-links li {
             position: relative;
         }
         
-        nav a:hover, nav a.active {
-            background-color: var(--accent);
-            color: white;
-        }
-        
-        /* 英雄区域 */
-        .hero {
-            height: 80vh;
+        .nav-links li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+            height: 100%;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
             align-items: center;
-            text-align: center;
-            padding: 50px 20px;
-            background: rgba(0, 0, 0, 0.4);
-            margin-bottom: 50px;
+            padding: 0 25px;
+            transition: background 0.3s;
         }
         
-        .hero h1 {
-            font-size: 3.5rem;
+        .nav-links li a:hover, 
+        .nav-links li a.active {
+            background: #b30000;
+        }
+        
+        /* 内容区域 */
+        .content-container {
+            width: 1200px;
+            max-width: 95%;
+            margin: 30px auto;
+        }
+        
+        /* 首页自定义内容 */
+        .home-content {
+            background: #fff;
+            padding: 40px;
+            border-radius: 4px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .welcome-section {
+            margin-bottom: 40px;
+        }
+        
+        .welcome-section h2 {
+            color: #0a4a9d;
+            font-size: 28px;
             margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-            animation: fadeInDown 1s ease;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #d40000;
         }
         
-        .hero p {
-            font-size: 1.5rem;
-            max-width: 800px;
-            margin-bottom: 30px;
-            animation: fadeInUp 1s ease;
+        .welcome-section p {
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            color: #444;
         }
-        .hero-image {
+        .welcome-section-image {
             width: 500px;
             height: 500px;
             object-fit: scale-down; /* 关键：保持比例填充 */
             display: block;
 
     }
-         .hero h2 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-            animation: fadeInDown 1s ease;
-        }
-        
-        .hero p {
-            font-size: 1.5rem;
-            max-width: 800px;
-            margin-bottom: 30px;
-            animation: fadeInUp 1s ease;
-        }
-
-        .hero h3 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-            animation: fadeInDown 1s ease;
-        }
-        
-        .hero p {
-            font-size: 1.5rem;
-            max-width: 800px;
-            margin-bottom: 30px;
-            animation: fadeInUp 1s ease;
-        }
-
-           .hero h4 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-            animation: fadeInDown 1s ease;
-        }
-        
-        .hero p {
-            font-size: 1.5rem;
-            max-width: 800px;
-            margin-bottom: 30px;
-            animation: fadeInUp 1s ease;
-        }
-
-           .hero h5 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-            animation: fadeInDown 1s ease;
-        }
-        
-        .hero p {
-            font-size: 1.5rem;
-            max-width: 800px;
-            margin-bottom: 30px;
-            animation: fadeInUp 1s ease;
-        }
-
-         .hero h6 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-            animation: fadeInDown 1s ease;
-        }
-        
-        .hero p {
-            font-size: 1.5rem;
-            max-width: 800px;
-            margin-bottom: 30px;
-            animation: fadeInUp 1s ease;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background-color: var(--accent);
-            color: white;
-            padding: 15px 40px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1.2rem;
-            transition: all 0.3s ease;
-            animation: pulse 2s infinite;
-        }
-        
-        .cta-button:hover {
-            background-color: #c0392b;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        }
-        
-        /* 地区导航 */
-        .region-nav {
-            background-color: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: 10px 0;
-            margin-bottom: 50px;
-            border-radius: 5px;
-            box-shadow: var(--shadow);
-        }
-        
-        .region-nav h2 {
-            text-align: center;
-            margin-bottom: 30px;
-            color: var(--light);
-            font-size: 2.2rem;
-        }
-        
-        .regions {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-            padding: 0 20px;
-        }
-        
-        .region-card {
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 10px;
-            width: 180px;
-            padding: 20px;
-            text-align: center;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            box-shadow: var(--shadow);
-        }
-        
-        .region-card:hover {
-            transform: translateY(-10px) scale(1.05);
-            background: white;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-        }
-        
-        .region-card i {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 15px;
-        }
-        
-        .region-card h3 {
-            color: var(--dark);
-            font-size: 1.3rem;
-        }
-        
-        /* 内容区域 */
-        .content-section {
-            display: none;
-            padding: 2780px 0;
-            margin-top: -30px;
-            min-height: 200vh;
-        }
-        
-        .content-section.active {
-            display: block;
-            animation: fadeIn 0.8s ease;
-        }
-        
-        .region-header {
-            text-align: center;
-            margin-bottom: 20px;
-            
-        }
-        
-        .region-header h2 {
-            font-size: 2.5rem;
-            color: var(--light);
-            margin-top: -2700px;
-            margin-bottom: 15px;            
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        }
-        
-        .region-header p {
-            max-width: 800px;
-            margin: 0 auto;
-            font-size: 1.1rem;
-            color: #e0e0e0;
-        }
-        
-        .region-content {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 30px;
-            margin-bottom: 50px;
-        }
-        
-        .text-content {
-            flex: 1;
-            min-width: 100px;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: var(--shadow);
-        }
-        .region-header h4 {
-            font-size: 2.5rem;
-            color: var(--light);
-            margin-bottom: 15px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        }
-        
-        .region-header p {
-            max-width: 800px;
-            margin: 0 auto;
-            font-size: 1.1rem;
-            color: #e0e0e0;
-        }
-        
-        .region-content {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 30px;
-            margin-bottom: 50px;
-        }
-        
-        .text-content {
-            flex: 1;
-            min-width: 300px;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: 30px;
-            border-radius: 15px;
-            font-size: 4.1rem;
-            box-shadow: var(--shadow);
-        }
-        .text-content h3 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            color: var(--light);
-        }
-        
-        .text-content p {
-            margin-bottom: 20px;
-            font-size: 1.1rem;
-        }
-        
-        .highlight {
-            color: var(--accent);
-            font-weight: 700;
-        }
-        
-        .image-gallery {
-            flex: 1;
-            min-width: 300px;
+        .custom-features {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-        
-        .gallery-item {
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            position: relative;
-            height: 250px;
-        }
-        
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-        
-        .gallery-item:hover img {
-            transform: scale(1.1);
-        }
-        
-        .gallery-item .caption {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgba(0, 0, 0, 0.7);
-            color: white;
-            padding: 10px;
-            font-size: 0.9rem;
-            text-align: center;
-        }
-        
-        /* 页脚 */
-        footer {
-            background-color: rgba(0, 0, 0, 0.8);
-            padding: 40px 0 20px;
-            margin-top: 50px;
-        }
-        
-        .footer-content {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
-            margin-bottom: 30px;
+            margin: 40px 0;
         }
         
-        .footer-section {
-            flex: 1;
-            min-width: 250px;
+        .feature-card {
+            background: #f0f5ff;
+            border-radius: 8px;
+            padding: 25px;
+            text-align: center;
+            transition: all 0.3s;
         }
         
-        .footer-section h3 {
-            font-size: 1.5rem;
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(26, 42, 108, 0.1);
+        }
+        
+        .feature-card i {
+            font-size: 48px;
+            color: #d40000;
             margin-bottom: 20px;
-            color: var(--light);
-            position: relative;
-            padding-bottom: 10px;
         }
         
-        .footer-section h3::after {
+        .feature-card h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: #0a4a9d;
+        }
+        
+        .feature-card p {
+            font-size: 15px;
+            color: #555;
+            line-height: 1.6;
+        }
+        
+        /* 新闻分类内容 - 默认隐藏 */
+        .news-category {
+            display: none;
+            background: #fff;
+            padding: 30px;
+            border-radius: 4px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .category-header {
+            display: flex;
+            align-items: center;
+            background: #0a4a9d;
+            height: 50px;
+            padding: 0 20px;
+            color: white;
+            position: relative;
+            margin-bottom: 25px;
+        }
+        
+        .category-header h2 {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        
+        .category-header::after {
             content: '';
             position: absolute;
             left: 0;
             bottom: 0;
-            width: 50px;
+            width: 100%;
             height: 3px;
-            background-color: var(--accent);
+            background: #d40000;
         }
         
-        .footer-section p, .footer-section li {
-            margin-bottom: 10px;
-            color: #bbb;
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
         }
         
-        .footer-section ul {
-            list-style: none;
+        .news-card {
+            border: 1px solid #eee;
+            border-radius: 4px;
+            overflow: hidden;
+            transition: all 0.3s;
         }
         
-        .footer-section a {
-            color: #bbb;
+        .news-card:hover {
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transform: translateY(-5px);
+        }
+        
+        .card-img {
+            height: 200px;
+            width: 100%;
+            overflow: hidden;
+        }
+        
+        .card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .news-card:hover .card-img img {
+            transform: scale(1.05);
+        }
+        
+        .card-content {
+            padding: 20px;
+        }
+        
+        .card-content h3 {
+            font-size: 18px;
+            margin-bottom: 12px;
+            color: #333;
+        }
+        
+        .card-content h3 a {
+            color: #333;
             text-decoration: none;
             transition: color 0.3s;
         }
         
-        .footer-section a:hover {
-            color: var(--accent);
+        .card-content h3 a:hover {
+            color: #d40000;
         }
         
-        .social-icons {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
+        .card-content p {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 15px;
         }
         
-        .social-icons a {
+        .news-meta {
             display: flex;
-            align-items: center;
+            color: #999;
+            font-size: 13px;
+            border-top: 1px solid #eee;
+            padding-top: 15px;
+        }
+        
+        .news-meta span {
+            margin-right: 15px;
+        }
+        
+        .news-meta i {
+            margin-right: 5px;
+        }
+        
+        .hot-tag {
+            display: inline-block;
+            background: #d40000;
+            color: white;
+            font-size: 12px;
+            padding: 2px 8px;
+            border-radius: 3px;
+            margin-left: 10px;
+        }
+        
+        /* 页脚 */
+        footer {
+            background: #0a4a9d;
+            color: white;
+            padding: 40px 0 20px;
+            margin-top: 50px;
+        }
+        
+        .footer-container {
+            width: 1200px;
+            max-width: 95%;
+            margin: 0 auto;
+        }
+        
+        .footer-links {
+            display: flex;
             justify-content: center;
-            width: 40px;
-            height: 40px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            transition: all 0.3s;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
         }
         
-        .social-icons a:hover {
-            background-color: var(--accent);
-            transform: translateY(-5px);
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 14px;
+            transition: opacity 0.3s;
+        }
+        
+        .footer-links a:hover {
+            opacity: 0.8;
         }
         
         .copyright {
             text-align: center;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 13px;
+            line-height: 1.8;
             padding-top: 20px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #999;
-            font-size: 0.9rem;
-        }
-        
-        /* 动画 */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(231, 76, 60, 0.7); }
-            70% { box-shadow: 0 0 0 15px rgba(231, 76, 60, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(231, 76, 60, 0); }
         }
         
         /* 响应式设计 */
         @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                gap: 15px;
+            .top-bar {
+                height: auto;
+                padding: 8px 0;
             }
             
-            nav ul {
+            .top-container {
+                flex-direction: column;
+                gap: 8px;
+            }
+            
+            .header-container {
+                flex-direction: column;
+                gap: 20px;
+                padding: 15px 0;
+            }
+            
+            .search-bar {
+                width: 100%;
+            }
+            
+            .nav-links {
                 flex-wrap: wrap;
+                height: auto;
+            }
+            
+            .nav-links li {
+                width: 50%;
+            }
+            
+            .nav-links li a {
+                padding: 12px;
                 justify-content: center;
+                font-size: 14px;
             }
             
-            .hero h1 {
-                font-size: 2.5rem;
+            .home-content {
+                padding: 25px;
             }
             
-            .hero p {
-                font-size: 1.2rem;
-            }
-            
-            .region-card {
-                width: calc(50% - 20px);
-            }
-            
-            .region-content {
-                flex-direction: column;
+            .news-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
-    <!-- 头部导航 -->
-    <header>
-        <div class="container">
-            <div class="header-content">
-                <div class="logo">
-                    <i class="fas fa-globe-asia"></i>
-                    <span>河北邢台新闻网</span>
-                </div>
-                <nav>
-                    <ul>
-                        <li><a href="#" class="nav-link active" data-target="home">首页</a></li>
-                        <li><a href="#" class="nav-link" data-target="beijing">国际新闻</a></li>
-                        <li><a href="#" class="nav-link" data-target="shanghai">民生新闻</a></li>
-                        <li><a href="#" class="nav-link" data-target="guangzhou">时政新闻</a></li>
-                        <li><a href="#" class="nav-link" data-target="chengdu">经济新闻</a></li>
-                        <li><a href="#" class="nav-link" data-target="chongqing">军事新闻</a></li>
-                        <li><a href="#" class="nav-link" data-target="neimenggu">体育新闻</a></li>
+    <!-- 顶部导航栏 -->
+    <div class="top-bar">
+        <div class="top-container">
+            <div class="top-links">
+                <a href="#">河北邢台新闻网</a>
+                <a href="#">河北邢台影音</a>
+                <a href="#">河北邢台财经</a>
+                <a href="#">河北邢台体育</a>
+                <a href="#">河北邢台农业</a>
+                <a href="#">河北邢台军事</a>
+            </div>
+            <div class="user-actions">
+                <a href="#"><i class="fas fa-user"></i> 登录</a>
+                <a href="#"><i class="fas fa-pen"></i> 投稿</a>
+                <a href="#"><i class="fas fa-rss"></i> RSS订阅</a>
+            </div>
+        </div>
+    </div>
     
-                    </ul>
-                </nav>
+    <!-- 网站头部 -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiB2aWV3Qm94PSIwIDAgMTAwIDEwMCI+PHJlY3Qgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiIGZpbGw9IiNkNDAwMDAiIHJ4PSIxMCIvPjx0ZXh0IHg9IjUwIiB5PSI1MCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjQwIiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSI+Q1RWPC90ZXh0Pjwvc3ZnPg==" alt="CCTV Logo">
+                <div class="logo-text">
+                    <h1>河北邢台新闻网</h1>
+                    <p>权威、及时、全面的新闻资讯平台</p>
+                </div>
+            </div>
+            <div class="search-bar">
+                <input type="text" placeholder="请输入关键词搜索新闻...">
+                <button><i class="fas fa-search"></i></button>
             </div>
         </div>
     </header>
-
-    <!-- 首页内容 -->
-    <section id="home" class="content-section active">
-        <div class="hero">
-            <h1>医院草菅人命！患者离世原因成谜，家属泣诉维权无门</h1>
-            <p>医院本是为人类服务的救命良药，是为人民幸福生活谋福祉的救馆地，是美好家园的维持者。然而却在邢台市人民医院南院区因医术不当，把生命当作儿戏，草芥人命，对家属及病人草草了事，不负责任，不正视双方的合法权益，对家属进行推搡扯皮，推卸责任，践踏生命的尊严，让普通老百姓生活支离破碎，陷入噩梦般的深渊。这场腐败落寞且令人发指的致命陷阱，让生命沦为一个牺牲品，成为败坏者的盾牌，让老百姓的痛哭长号在冤屈的卑劣之中!</p>
-            <h2>事件回顾：患者离世，医院态度冷漠</h2>
-            <p>2025年6月17日，国永章先生因食欲不振全身乏力被送往邢台市人民医院北院区做检查进行治疗，诊断结果为转氨酶数值偏大，乙肝损伤随后国永章先生被安排在南院区中西医肝病科住院。然而，在入院10余天症状不仅没有一点缓解，反而导致全身黄胆发烧。这10来天的努力病情不降反升，让家属非常担心国先生的安危。然而在26号主治医生李鑫告知家属需要做人工肝治疗再次净化缓解转氨酶数值，随后27号告知家属上午做置管治疗下午做人工肝治疗。弹指之间，又告知家属27号做置管治疗28号做人工肝治疗。在家属希望国先生能药到病除，只能无奈地同意医院的统一治疗。但令人发指的却是27号上午国先生非常清醒，却在简陋的处置室做置管治疗时10分钟后医护人员推门寻找药品和仪器，源源不断的人进入处置室，得来耳边的结果却是人已经休克，但是抢救回来了，有意识只是血压低。在11点半左右，医院人员告知家属上呼吸机，有生命危险，家属同意过后过了大概10分钟告知人已死亡。家属苦苦等待，极力盼望，迎来的只有人确定不行了的结果。更令家属难以接受的是，医院方面始终未明确告知死亡原因，仅以简单的话语搪塞，只是一味的拖延让等待医化的到来，甚至一味的混淆家属的判断指明这个过程和结果正常，并且拒绝提供完整病历。</p>
-            <img src="image\p1.png" class="hero-image">
-            <img src="image\p2.png" class="hero-image">
-            <h3>二、家属质疑：医院存在重大过失</h3>
-            <p>据家属反映，国先生入院后，医院对国先生的治疗手法不是手术，仅简单做了置管缓解转氨酶数值，然而却在仅仅的几十分钟里出现巨大变故，上午安详无事，中午却溘然长逝。当然，令人匪夷所思的是家属希望医院提供病例和具体抢救措施，医院却拒绝提供，国先生的病情在几小时内急剧恶化，最终“抢救”无效死亡。在没有任何预见性的情况下以及医院的拖延，家属怀疑，医院病历造假。</p>
-            <img src="image\p3.png" class="hero-image">
-            <h4>三、医院推辞：医院回应含糊其辞，相关部门介入调查</h4>
-            <p>国先生的离世在此次过程中没有任何征兆，一个完好的正常人突然溘然长逝，医院在人已经死亡的前提下才让家属签署病危通知书以及尸体解剖通知书。这是对患者和家属的不尊重。
-随后家属报警想要一个合理的解释，长达5个小时后提供了病例以及对接。期间尸体一直放在简陋的处置室，等来的结果却是肺衰竭。患者进行的治疗是置管，得到的结论却是无稽之谈。</p>
-            <img src="image\p4.png" class="hero-image">
-            <h5>四、事件争议：医院对应措施草草了事</h5>        
-            <p>据家属显示，国先生在置管阶段时是冲冲忙忙推进设施以及拿取药物，如此可见，这个简陋的处置室连基本的急救设施都不齐全，然而病人的安危却是在与时间做斗争，这无疑是将患者的生命安全放置于危险境地，不仅是对家属的不负责任，更是对病人生命垂危的不尊重。人的生命是无价之宝，在为人们服务的医院却对病人安危草草了事，这是极大的对生命的不屑一顾。
-这些事件暴露出部分医疗机构管理混乱、责任心缺失，甚至对患者生命极度漠视。沦为社会公民，我们是要服务于公民，尊重于公民，国先生的家属只是想要一个合理的解释，公正的真相，让家属合情合理地明白事情的来之去脉，让逝者安息。如此简单情形，医院却不尊重家属对真理的渴望，妄想让真相石沉大海。医院的不合理化措施却让普通老百姓承受痛苦的边缘。这场悲剧的发生让受害者付出无穷无尽的悲伤，医院需还国永章先生一个公道，还国先生家属一个公道，还真正医疗事业一个公道!</p>
-            <img src="image\p5.png" class="hero-image">
-            <img src="image\p6.png" class="hero-image">
-            <h6>五、社会反思：医疗乱象何时休</h6>
-            <p>近年来，类似“医院草菅人命”的新闻屡见不鲜。医院本应是守护生命的最后防线，却因某些人的冷漠与失职，让病患在绝望中坠入更深的深渊。当白衣天使的外衣下藏着麻木不仁的灵魂，当消毒水味掩盖了人性溃烂的气息，那些被草率处置的病例、被敷衍塞责的家属、在走廊担架上无声消逝的生命，都成了这个时代最刺眼的医疗耻辱。每一个因疏忽而凋零的生命背后，都是一个被碾碎的家庭，更是对整个医疗体系信任的彻底崩塌——这不是简单的制度漏洞，而是对人们誓言最彻底的背叛。当救死扶伤沦为机械流程，当患者沦为病历上的一个数字，这样的医院，与殡仪馆何异？ 生命无价，医疗机构的职责是救死扶伤，而非草草了事。我们希望，国先生的悲剧不再重演，每一个生命都能得到应有的尊重，让普通老百姓能真真正正的合法维护自己的权益!</p>
-</div>        
+    
+    <!-- 主导航 -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <ul class="nav-links">
+                <li><a href="#" class="active nav-link" data-target="home">首页</a></li>
+                <li><a href="#" class="nav-link" data-target="politics">国内</a></li>
+                <li><a href="#" class="nav-link" data-target="international">国际</a></li>
+                <li><a href="#" class="nav-link" data-target="finance">财经</a></li>
+                <li><a href="#" class="nav-link" data-target="tech">科技</a></li>
+                <li><a href="#" class="nav-link" data-target="sports">体育</a></li>
+                <li><a href="#" class="nav-link" data-target="entertainment">娱乐</a></li>
+                <li><a href="#" class="nav-link" data-target="health">健康</a></li>
+            </ul>
         </div>
-    </section>
-
-    <!-- 北京地区 -->
-    <section id="beijing" class="content-section">
-        <div class="container">
-            <div class="region-header">
-                <h2><i class="fas fa-landmark"></i>团结引领广大青年学生为中国式现代化挺膺担当——全国学联五年工作回眸</h2>
-                <p>新华社北京6月30日电 题：团结引领广大青年学生为中国式现代化挺膺担当——全国学联五年工作回眸新华社记者董博婷团结起来在矢志奋斗中谱写新时代的青春之歌。中华全国学生联合会第二十八次代表大会将于2025年7月2日在京开幕广大青年学生将迎来属于自己的青春盛会。回眸五年，全国学联在习近平新时代中国特色社会主义思想科学指引下，坚持党的领导、牢记服务宗旨、锐意深化改革、矢志挺膺担当，紧跟时代步伐，把握青年工作特点和规律，组织动员广大青年学生听党话、跟党走，为中国式现代化建设添砖加瓦、贡献力量。加强思想引领，坚定理想信念今年4月23日在第30个世界读书日到来之际，共青团中央、全国学联在深圳大学举办“青春年少好读书”学联读书会活动。“我们一起学习了《习近平与大学生朋友们》，总书记的教诲指引我们怎么看、怎么办。”读书会上，同学们围坐而谈，在阅读中夯实理论根基，在问答间生发思想共鸣。理想指引青春航向，信念决定事业成败。五年来，全国学联不断保持和增强政治性、先进性、群众性，加强对广大青年学生的思想政治引领——“青年大学习”网上团课以同学们听得进、学得懂、记得住的方式，借助微电影、微访谈等形式，使党的创新理论更加可亲可感；新疆大学研究生会推出“暖‘新’计划”，以青少年研学营、星火宣讲团、校园快闪等活动，助力各族青年学生交往交流交融，凝聚铸牢中华民族共同体意识的精神力量；南京师范大学学生会依托学校和共青团江苏省委共同创建的省团课设计研发中心，研发系列宣讲视频、公益课程等，积极服务大中小学思政教育一体化建设……一系列融思想性、教育性、实践性于一体的活动，成为全国学联引导广大学生坚定理想信念的重要抓手，不断激发青年学生投身强国建设、民族复兴伟业的内在动力。砥砺青春之志，担当强国使命使命引领方向，担当铸就未来。五年来，各级学联学生会组织紧扣时代脉搏，用心用情服务青年发展，组织带领广大青年学子奋进新征程、建功新时代。在青春舞台一展风采——“挑战杯”“创青春”等赛事中，青年学生踊跃投身科研攻关、创新创业一线，面向国家重大战略需求，瞄准社会重大课题及现实问题，在人工智能、量子通信等众多领域展现风采、勇攀高峰。斩获“挑战杯”国赛金奖的浙江大学“无土先锋”项目，围绕提高基质发酵微生物菌剂的效率，研究筛选出高发酵效率的不动杆菌，将发酵效率提高2倍以上。为广袤乡村注入动能——中国农业大学重庆数耘智慧农业科技小院组织多学院农大青年，组建知农AI农学生团队，将先进农技和AI技术送到全国各地甚至共建“一带一路”国家，为当地农业发展贡献中国青年方案。华南农业大学青年学生在“三下乡”实践活动中，把乡村田野当作广阔课堂，在社会实践中历练扎实本领，更加坚定了投身乡村振兴的选择。于基层一线成长成才——全国学联“青年实干家计划”吸引了全国500余所高校的7700余名研究生加入，他们深入基层一线实岗锻炼，把论文写在祖国大地上，扎根基层、服务基层、奉献基层。用交流互鉴凝聚共识——全国学联组织或参与组织“新桥梁计划”、“情牵厦金”两岸青年学子文化研习营、“海外学子华夏行”等活动，为越来越多的港澳台和海外青年学子提供机会，坚定了他们用所学所长报效祖国的决心。从实验室到黄土地，从论坛讲台到志愿岗亭，全国学联积极服务青年，让条条青春溪流汇聚成潮，在中国式现代化图景中澎湃奔涌。</p>
-            </div>           
-            <div class="region-content">
-                <div class="text-content">
-                    <h3>“一人住院、全家忙乱”这样缓解</h3>
-                    <p>多地医疗机构试点免陪照护服务“一人住院、全家忙乱”这样缓解（民生一线）今年4月，国家卫生健康委等三部门印发《医院免陪照护服务试点工作方案》。方案提出，在各地人口老龄化程度较深的城市等，优先确定在老年住院患者占比较高、免陪照护服务需求较大、工作基础较好的三级医院，开展免陪照护服务试点工作。所谓“免陪照护服务”，主要指患者住院期间，在患者或家属知情同意且自愿选择的基础上，根据患者病情和生活自理能力等，由护士或医院聘用医疗护理员提供的生活照护服务。
-免陪照护服务试点运行情况与效果如何？未来推广有哪些难点与希望？记者在江苏、湖南、四川进行了采访。服务专业周到收费公开透明
-清晨的四川省成都市第八人民医院，葱郁树林环抱，鸟鸣声不绝于耳。“天气真好，坐起来看看吧。”医院呼吸内科二病区，宽敞明亮的病房里，护理员张选荣把曾大爷的床摇高了些。算着时间，张选荣为曾大爷翻身、叩背，又帮他把处理好的“饭菜”匀速喂进鼻饲管。数月前，曾大爷因痰栓阻塞气道，正是张选荣第一时间发现，通知医生抢救。
-曾大爷85岁，他的病情一度愁坏了家人：肺部感染严重，虽有好转，但还得长期卧床、借助呼吸机呼吸。“儿女都在外地，我快80岁了，体力实在跟不上。”老伴赵婆婆说。
-有了免陪照护服务，赵婆婆来病房时只需要陪陪老伴：“张师傅帮了我们家大忙。”
-同样是清晨，江苏省无锡市第二人民医院泌尿外科夜班医疗护理员戴和英准时出现在85岁的患者钱中和身边，先将病床摇到一定高度，让老人靠在枕头上，然后洗脸、刷牙、喂饭、喂药。
-“昨晚睡了几个小时？尿量多少？有没有血块？”早晚班护士和夜班医疗护理员同步交接。戴和英对答如流，护士长陈燕听后对白班护理员陈松兰交代：“术后体温偏高属于正常，白天要多喝水，继续观察……”
-自从钱中和3年前患上肿瘤，女儿钱凌洁几乎把家搬进医院，寸步不离地守着。为什么不找护工？钱凌洁坦言：一是护工质量参差不齐，担心能否尽心细致照料；二是费用比较高，每天在200元以上，家庭难以承受。
-这次住院，钱凌洁注意到医院走廊上贴着介绍：“免陪照护服务”试点，以医疗护理员团队方式，为患者提供助餐、助洁、助浴等生活照顾服务，每天收费120元左右。她观察到护理员的服务很专业，立即选择了这项服务。“父亲在医院有护理员照顾，我回家好好睡了一觉。”钱凌洁终于松了一口气。
-中南大学湘雅医院，60岁的龙女士刚做完乙状结肠癌根治术，谈及免陪照护，她打开了话匣子：“请‘一对一’护工一天要320元，压力不小。现在154元一天的‘一对多’服务，性价比高多了，这次住院算下来花费不超过1500元。”
-免陪照护，令“一人住院、全家忙乱”的困境得到了缓解。公开透明的收费体系，也增加了其吸引力。今年5月，四川省医疗保障局新增“免陪照护服务”价格项目，以省管三甲公立医疗机构为例，1名护士或护理员照护1名患者，价格为每人每日240元；1名护士或护理员照护多名患者，价格为每人每日100元。“院方会结合人力成本、照护数量、照护难度等因素收费，公示服务内容和收费标准，家属可以充分比较评估后自主选择。”成都市第八人民医院院长晏殊说。提供专业培训保障照护质量
-一支专业高效的护理员队伍，是免陪照护得以实现的关键。如何保障？
-“我们增设了照护部，负责管理护理员和免陪照护工作。”晏殊介绍，医院自主编写照护教材开展培训，现有500多名护理员。今年56岁的张选荣从事护理员工作刚满一年，上岗前先参加了医院组织的专业培训，既有理论知识，也有实操培训。
-陈松兰本是无锡二院的护工，去年参加无锡市护理学会组织的培训课程，考试合格后获得江苏省医疗护理员岗位培训证书，今年3月医院开展试点后正式持证上岗。据无锡二院护理部主任华敏峰介绍，医院的103名护工中，已有90人获得江苏省医疗护理员岗位培训证书，其余人仍在培训中。
-“以前每天要工作24小时，累得不行；现在两班倒、12小时一班，时间缩短了，要求更高。”陈松兰说，以前给患者倒完尿壶就完事，现在要观察尿量、颜色，有异常立刻报告护士。
-不仅要照料生活，护理员还提供心理疏导。“亲情陪伴也是工作的一部分。”依照老师传授的沟通技巧，张选荣尝试把患病老人当成亲人，手里事做完就和他们开开玩笑、聊聊家常。
-对湘雅医院护理员文清莲来说，免陪照护政策让她有了归属感。“以前打零工，没培训、没标准，收入不稳定。现在医院和公司给我们做专科培训，从照护流程到沟通技巧都会系统学习。有了固定岗位和保底工资，还有专门休息室。”文清莲说。
-更多优质护理人才在路上。作为护理员培训基地之一，无锡卫生高等职业技术学校2024年成立康复保健系，下设健康管理、康复治疗等4个专业。“超过一半学生考取了国家级医疗护理员等相关技能等级证书，为拓宽就业渠道提供保障。”无锡卫生高等职业技术学校社会服务部部长王安琪说。
-以患者为中心持续创新优化试点至今，免陪照护服务积累了不少经验。江苏省卫生健康委医政处处长高鹏介绍，江苏开展试点工作的基础较好，早在2006年已有3家医院启动无陪护试点工作。截至目前，在江苏省的31家培训基地，已完成对1.3万余名医疗护理员的培训工作。
-2024年11月，江苏印发《关于加强护士队伍建设 优化护理服务的实施意见》，再次对“免陪照护服务”试点工作进行部署。各地医疗机构优先在重症监护室、骨科、老年科、新生儿科等科室开展试点工作。目前，全省已有140家医疗机构展开探索。从医院运行情况来看，患者满意度提升、平均住院日下降。
-湘雅医院护理部主任岳丽青介绍：“我们以急诊抢救区为突破口，2020年启动无陪护服务试点，采用市场自主定价的‘一对多’模式，如今已形成常态化运行的急诊特色服务。”自急诊科启动试点以来，抢救区配备的患者与护理员比例达1∶4，院内感染率显著下降，医患纠纷投诉率大幅降低。
-以患者为中心，不断探索创新。通过每日清单任务、医护辅一体化查房等机制，湘雅医院初步构建起“医—护—护理员”紧密型照护团队协作模式。数据显示，住院病区试点以来，“一对多”服务接受率达56%，患者满意度达99%。
-面对试点过程中的挑战，岳丽青坦言：“主要存在两方面问题，一是支持系统有待完善，第三方公司管理水平提升、护理员两班倒工作制下的人力成本压力等问题凸显；二是陪检服务需求量大，现有资源配置难以充分满足临床需求。”针对这些情况，她表示医院正积极开展差异化定价调研，探索多渠道人力资源保障机制，努力在优化服务质量与实现运营可持续性之间寻求最佳平衡点。</p>
-                    <p><span class="highlight">故宫博物院</span> - 世界上现存规模最大、保存最完整的木质结构古建筑群，展示了明清两代的皇家生活。</p>
-                    <p><span class="highlight">长城</span> - 世界新七大奇迹之一，八达岭长城是游客最多的长城段落。</p>
-                    <p><span class="highlight">天坛</span> - 明清两代帝王祭天、祈谷的场所，建筑精美，具有极高的艺术价值。</p>
-                    <p><span class="highlight">798艺术区</span> - 由旧工厂改造的现代艺术中心，展示了中国当代艺术的活力。</p>
-                    <p>北京烤鸭是必尝的美食，全聚德和便宜坊是最著名的烤鸭店。</p>
-                </div>
-                
-                <div class="image-gallery">
-                    <div class="gallery-item">
-                        <img src="https://images.unsplash.com/photo-1600804340584-c7db2eacf0bf?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="故宫">
-                        <div class="caption">故宫博物院</div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="https://images.unsplash.com/photo-1542662565-7e4b66bae529?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="长城">
-                        <div class="caption">八达岭长城</div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="https://images.unsplash.com/photo-1593693392686-a8a1d5dffa0e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="天坛">
-                        <div class="caption">天坛公园</div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="https://images.unsplash.com/photo-1601134467661-3a775e1116d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="北京烤鸭">
-                        <div class="caption">北京烤鸭</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 上海地区 -->
-    <section id="shanghai" class="content-section">
-        <div class="container">
-            <div class="region-header">
-                <h2><i class="fas fa-city"></i> 海外现存最长寿大熊猫“欣欣”在墨西哥城迎来35岁生日</h2>
-                <p>当地时间6月29日，墨西哥环境保护部联合墨西哥城查普尔特佩克动物园，墨西哥中国文化中心以及墨西哥中国文化交流协会，为大熊猫“欣欣”举办35岁生日庆祝派对。此外，动物园还为大熊猫“欣欣”准备了切生日蛋糕等活动。
-                   雌性大熊猫“欣欣”是中国政府赠予墨西哥的两只大熊猫“迎迎”和“贝贝”的后代，是拉丁美洲目前唯一的大熊猫，也是海外现存最长寿的大熊猫。据了解，35岁的熊猫年龄相当于人类的110岁左右。（盛嘉迪）</p>
-            </div>           
-            <div class="region-content">
-                <div class="text-content">
-                    <h3>团结引领广大青年学生为中国式现代化挺膺担当——全国学联五年工作回眸</h3>
-                    <p>上海被誉为"东方巴黎"，是中国最国际化的城市，也是全球重要的金融、贸易和航运中心。</p>
-                    <p><span class="highlight">反对“大而美”法案惹怒特朗普 共和党一名参议员放弃竞选连任</span> - 新华社华盛顿6月29日电　在美国国会参议院28日晚仅以两票优势通过针对共和党籍总统特朗普力推的大规模减税及支出法案的程序性投票后，投出反对票的共和党议员汤姆·蒂利斯29日宣布，将不寻求在明年的中期选举中竞选连任。
-  据美国媒体报道，代表北卡罗来纳州的蒂利斯连日来一直批评该法案中的医疗补助条款，并表示他掌握的数据显示，该法案将让其所在州承担超过300亿美元的成本，以弥补联邦资金损失。在28日的投票中，蒂利斯和代表肯塔基州的共和党参议员兰德·保罗与民主党人一起投下了反对票。
-
-蒂利斯在参议院已经超过十年。他29日在一份声明中严厉批评美国两党缺乏合作，并指责其他政客没有花时间去理解立法将如何影响普通美国人，他批评说：“过去几年在华盛顿，越来越明显的是，那些愿意拥抱两党合作、妥协并展现独立思考的领导人正在成为濒危物种。”
-
-特朗普连日来在社交媒体上批评蒂利斯，称他是一个“只会空谈和抱怨的人，不是干实事的人”，并威胁在未来数周将会见有意在明年中期选举中挑战蒂利斯的人。29日，特朗普就蒂利斯不寻求连任表态在社交媒体上发文说，这是个“好消息”。
-
-据悉这项付诸参议院表决的“大而美”法案5月在众议院以一票优势艰难通过，法案包含多项条款，文本长达940页，内容涉及美国政治“敏感点”，包括大幅度削减税率、新能源补贴和社会保障支出以及增加军费和边境安全支出。美国媒体称，这可能恶化美国财政预算赤字状况，因而不仅遭民主党抵制，在共和党内部也引发分歧。</p>
-                    <p><span class="highlight">特朗普：腐败案审理妨碍内塔尼亚胡“干大事”</span>新华社纽约6月28日电　美国总统特朗普28日在社交媒体上发文称，针对以色列总理内塔尼亚胡的腐败案调查是“政治迫害”，同时喊话“放过”内塔尼亚胡，因为“他有大事要做”。
-
-特朗普在社交媒体“真实社交”上发布帖文称：“他们对内塔尼亚胡所做的事情太可怕。内塔尼亚胡与美国合作，在消除伊朗核威胁方面取得巨大成功。重要的是，他目前正在与哈马斯谈一项协议，其中包括解救人质。”
-
-“以色列总理怎么可能整天无所事事地坐在法庭上。这是一场政治迫害。”特朗普说，“美国每年花费数十亿美元用于保护和支持以色列，远远超过其他任何国家，我们不能容忍这种情况。”
-
-特朗普在帖文结尾处说：“放过比比（内塔尼亚胡），他有大事要做！”
-
-特朗普25日曾在社交媒体上发文，要求撤销对内塔尼亚胡的腐败案指控。
-
-内塔尼亚胡26日要求将针对他腐败指控的法庭审理暂停两周，理由是地区面临的紧迫挑战，以及需要专注于加沙冲突和人质谈判等关键问题。据以色列媒体报道，法院已驳回这一申请。
-
-2020年初，以色列检方以受贿、欺诈和违背公众信任3项指控正式起诉内塔尼亚胡。同年5月，法院首次开庭审理该案，内塔尼亚胡因此成为以色列首位接受司法审理的在任总理。2024年12月10日，内塔尼亚胡首次因涉嫌贪腐案出庭作证。据以媒体报道，如果罪名成立，内塔尼亚胡因受贿面临的刑罚将是最高10年监禁，因欺诈和违背公众信任面临的刑罚将是最高3年监禁。
-</p>
-<p><span class="highlight">马斯克再次痛批特朗普“大而美”法案</span> - 新华社华盛顿6月28日电　美国企业家埃隆·马斯克28日再次发文批评总统特朗普力推的“大而美”税收与支出法案。
-
-马斯克在社交媒体上称，美国参议院正在审议的最新法案草案“将摧毁美国数百万个就业岗位，并对我们国家造成巨大损害”。他痛批法案“极其疯狂且具破坏性”，“给夕阳产业提供施舍，却严重损害未来产业”。马斯克还说：“这项法案将债务上限提高5万亿美元，这是历史上最大的增幅，让美国走上被债务奴役的快车道。”
-
-马斯克此前多次批评“大而美”法案削弱他为缩减美国预算赤字所做的努力，甚至痛批该法案“令人作呕”，称投票支持法案的议员“可耻”。有美国媒体认为，法案部分条款关乎马斯克切身利益，他对法案的批评也是他与特朗普关系恶化的重要原因之一。
-
-共和党人掌控的美国国会众议院5月22日以一票优势艰难通过“大而美”法案。参议院目前正在审议该法案，并即将进行程序性投票。该法案将实施特朗普的大部分政策议程。但据估算，这项法案未来10年将使美国联邦政府的债务增加约3.8万亿美元。
-
-</p>
-                </div>
-                
-
-            </div>
-        </div>
-    </section>
-        <!-- 广州地区 -->
-    <section id="guangzhou" class="content-section">
-        <div class="container">
-            <div class="region-header">
-                <h2><i class="fas fa-city"></i> 第35届中国新闻奖参评材料今起公示！</h2>
-                <p>作为中国的经济中心，上海融合了东西方文化，拥有独特的现代都市风貌和丰富的历史遗产。</p>
-            </div>
-            
-            <div class="region-content">
-                <div class="text-content">
-                    <h3>税惠政策精准“滴灌”民营经济（财经故事）</h3>
-                    <p>本报记者 刘军国
-2025年06月30日05:54 | 来源：人民网－人民日报小字号
-“税收优惠就像一场‘及时雨’，去年研发费用加计扣除政策为我们减免了数额可观的税款，这笔资金全部投入到锂电池正极材料的迭代研发中。”在浙江湖州长兴县，浙江天宏锂电股份有限公司负责人告诉记者。
-民营企业的感慨，折射出税惠政策对民营经济的“滴灌效应”。用“真金白银”的税收政策和优质服务助力民营企业创新发展，是提振民营企业发展信心的重要举措。近年来，长兴县税务部门聚焦民营经济发展痛点，以“政策+服务”双轮驱动，相继出台一系列举措。今年前5个月，长兴县规模以上工业企业中，民营企业增加值同比增长9.3%。
-“税费负担切实减轻了，让我们在推进绿色化、智能化转型时底气更足。”长兴新型炉料企业有限公司财务负责人许亚花表示，借助“留抵退税+设备更新”组合拳，企业投入超千万元资金升级智能化窑炉生产线，实现了产能显著提升与能耗大幅降低的双重效果。
-税惠政策的精准“滴灌”还体现在产业链协同上。长兴县针对新能源电池、高端装备制造等主导产业，推出“链主企业+配套小微”税收联动服务机制。天能集团受益于税惠政策，进一步畅通了增值税抵扣链条，便捷获取合法合规的税前扣除凭证，有效降低了产业链整体运营成本达数千万元。
-长兴县税务局对管理类别为一、二类的出口企业开通“退税绿色通道”，2024年累计为689家企业办理出口退税超20亿元。在享受制度流程优化带来便利的同时，更多民营企业也开始主动将合规经营转化为市场竞争力，不断擦亮纳税信用这块“金字招牌”。湖州恩创智能装备有限公司凭借良好纳税信用，不仅快速享受到出口退税便利，还通过“银税互动”获得低息贷款，用于扩产智能设备生产线，预计近期将收获可观的订单增量。</p>
-                    <p><span class="highlight">外滩</span> - 欣赏黄浦江两岸的万国建筑博览群和陆家嘴现代摩天大楼的完美结合。</p>
-                    <p><span class="highlight">南京路步行街</span> - 中国最著名的商业街，购物天堂，拥有百年历史。</p>
-                    <p><span class="highlight">豫园</span> - 江南古典园林的代表作，园内亭台楼阁、假山水榭，布局精巧。</p>
-                    <p><span class="highlight">迪士尼乐园</span> - 中国大陆首座迪士尼主题乐园，适合家庭游玩。</p>
-                    <p>上海的小笼包、生煎包和本帮菜是必尝的特色美食。</p>
-                </div>
-                
-                <div class="image-gallery">
-                    <div class="gallery-item">
-                        <img src="https://images.unsplash.com/photo-1503919545889-aef636e10ad4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="外滩">
-                        <div class="caption">外滩夜景</div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="https://images.unsplash.com/photo-1545912452-8aea7e25a3d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="陆家嘴">
-                        <div class="caption">陆家嘴金融区</div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="https://images.unsplash.com/photo-1544986581-efac024faf62?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="豫园">
-                        <div class="caption">豫园</div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="小笼包">
-                        <div class="caption">上海小笼包</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- 成都地区 -->
-     <section id="chengdu" class="content-section">
-        <div class="container">
-            <div class="region-header">
-                <h2><i class="fas fa-city"></i> 三个城市更新故事里的金融力量（财经眼·为新型城镇化战略提供有力资金保障）</h2>
-                <p>
-                    近年来，山东济南市累计安排6000万元政府专项债券资金，支持济南市天桥区王炉北辛片区改造项目。
-　　鲁 文摄
-
-　　城市是推动高质量发展、创造高品质生活、全面建设社会主义现代化国家的重要载体。截至2024年底，我国常住人口城镇化率达到67%，已有9.4亿人生活在城镇。人民群众的需要从“有没有”转向“好不好”，我国城市建设也从大规模增量建设转向存量提质改造和增量结构调整并重，进入了城市更新的重要时期。
-
-　　实施城市更新行动，是新型城镇化战略的重要内容，城市更新需要大量资金资源要素的投入。近年来，财政金融政策加力支持，投融资机制不断创新，各地城市更新加快了脚步，推动城市建设高质量发展的同时，进一步稳投资、促消费、惠民生，在扩大内需中持续绘就幸福生活的新图景。
-
-　　既融资又“融智”，政策性金融为老旧小区改造按下“加速键”
-
-　　“路面不平、雨天积水，人行道经常被汽车占用，出行很不方便。”说起过去的居住环境，在江西萍乡市湘东区富丽小区住了20年的蔡云秋直摇头。
-
-　　“家里人一直劝我搬走，但老房子住惯了，跟街坊邻居也有感情。”蔡云秋犹豫之际，传来了小区改造的好消息。
-
-　　坑洼的路面修整后铺上了柏油，雨污管网改造后下水顺畅了，新规划的停车位、活动广场分区明确……已基本完成改造的富丽小区焕然一新。“现在住得可踏实了，生活还更有滋味。”每天傍晚，蔡云秋与街坊聚集在活动广场跳起健身操。
-
-　　富丽小区加速“变身”的背后，离不开政策性金融支持。“从改造方案设计开始，国家开发银行江西分行就参与进来，并提供了约1000万元长期贷款。”富丽小区改造建设方、萍乡市博越建设开发有限公司项目负责人杨倩介绍。
-
-　　“老旧小区改造是复杂的综合性工程，我们协助建设方在工程规划阶段就算清投入和收益，更好实现资金平衡。”全程参与富丽小区改造的国开行江西分行客户经理邵添夏介绍，改造主要以道路硬化、管网改造等基础类和停车位改扩建等完善类项目为主，定下改造方案后基本上就能算清改造成本。
-
-　　同时，还要帮助建设方规划还款来源，本着市场化的原则提供融资。老旧小区改造一次性投入较大，但收入来源有限、回收周期较长，如何合理地提供融资方案，帮助建设方实现“微利可持续”的改造模式？
-
-　　先算“小账”。富丽小区改造后环境整洁美观，停车更加有序，为延续改造成效，小区根据业主要求进行统一物业管理，相应的物业费和停车费可成为改造项目收入来源。
-
-　　再算“大账”。“从实际操作看，富丽小区的改造不是孤立的，而是连同周边20多个老旧小区的连片改造，可以整体上通盘考虑收益。”邵添夏表示，比如建设方拥有这片小区附近农贸市场等经营设施的收益权，随着改造的推进，会带动周边市场增加人气，吸引商贩入驻，“这样一来，相关经营收入逐渐增加，还贷现金流更有保障。”
-
-　　改造方案与融资方案同步落地，为这一区域28个老旧小区的有序改造打下了坚实基础。“政策性金融不仅为项目建设融资输血，也为改造‘融智’，提供全流程的解决方案。”杨倩介绍，现在各项工程压茬推进，全部改造完成后，将惠及群众近1.5万户。
-
-　　不只江西，在浙江、新疆等地，今年以来，国开行支持的多个城镇老旧小区改造项目稳步推进。据统计，今年1—5月，国开行发放城市更新领域相关贷款5751亿元，重点支持城镇老旧小区整治改造、城中村更新改造以及城市历史文化保护传承等。
-
-　　以存量带动增量，资本市场新工具助力打造消费新地标
-
-　　购物中心是现代城市的亮丽风景，不仅成为建筑地标，更构筑了消费、商业、文化的综合空间。近年来，新的融资工具为购物中心更好服务城市生活注入了新动能。
-
-　　在上海虹桥，新商场建设正酣，前湾印象城全面进入内部精装修阶段，已经引入300多个国内外品牌，将于年底亮相。在天津和平路步行街，老商场焕发新活力，户外、潮玩、奶茶、新能源汽车……商场消费新品种一个不缺，改造更新后的和平印象城吸引了越来越多的年轻人。
-
-　　一个在上海，一个在天津，这两个项目的顺利推进，却与位于浙江杭州余杭区的西溪印象城密不可分。
-
-　　“去年，我们以杭州西溪印象城为底层资产，发行了中金印力消费REIT，募集资金超过30亿元，这些资金大部分用于上海、天津等新项目的建设投入。”印力集团董事长丁力业说，消费基础设施REITs（不动产投资信托基金）的推出，让公司找到了可持续发展的商业新模式。
-
-　　紧临西溪湿地公园，地铁直通商场地下一层，周末的西溪印象城里顾客络绎不绝，人们在餐厅门口排起长队，不少家庭在山姆会员店里采买。“这里全年客流量超过2000万，租金收缴率超过99%，营收稳中有增。”中金公司投资银行部固定收益组联席执行负责人贾舟祺说，“作为中金印力消费REIT的发行人和管理人，我们团队经过多次实地调研和访谈，认为这个资产质量很好。”
-
-　　贾舟祺介绍，基础设施REITs是存量基础设施项目以公开募集基金的形式进行融资的金融工具，可以理解为让基础设施资产上市获得融资，投资者可以像买卖股票一样进行基础设施REITs产品交易。这一新工具2021年推出以来，覆盖的资产类型不断扩容，于2023年3月拓展至消费基础设施领域。凭借良好的资产质量和清晰的产权结构，印力集团成为国内首批消费基础设施REITs项目的“尝鲜者”。
-
-　　“我们公司成立以来，一直聚焦于购物中心投资、开发和运营管理，业务模式比较‘重’，太需要这样的融资工具了。”丁力业举例，比如前湾印象城的建设耗资20多亿元，靠租金收回投资，周期十分漫长，而有了这一工具，能够将公司的存量资产盘活，不仅降低企业的负债率，募集的资金还能投入到新的投资中去，让沉淀资金“滚动”起来。
-
-　　消费基础设施REITs不仅满足企业融资需求，也为投资者带来新机遇。“上市以来，中金印力消费REIT已完成了3次分红的发放，为投资者带来可观的分红收益。”贾舟祺说。
-
-　　“不少老顾客和承租人都成了我们的投资者。”丁力业说，“这激励我们不断更新设施改进服务。”
-
-　　截至6月中旬，全国已有8只消费基础设施REITs上市，涉及基础设施类型包括购物中心、社区商超和农贸市场。“消费基础设施REITs一头连着消费，一头连着投资，双管齐下扩内需，未来发展空间很大。”贾舟祺认为，REITs募集资金用于存量项目的更新或者新项目的投资建设，一方面提升城市基础设施建设和商业配套的水平，另一方面能够为老百姓提供更优质的消费环境和投资渠道，形成投资与消费的良性循环，是金融提升服务实体经济质效的新实践。
-                </p>
-            </div>
-            
-            <div class="region-content">
-                <div class="text-content">
-                    <h3>雾都魅力</h3>
-                    <p>成都市（Chengdu City），简称“蓉”，别称蓉城、锦城，四川省辖地级市、省会、副省级市、超大城市，地处中国西南地区、四川盆地西部、青藏高原东缘，总面积14335平方千米，通用语言为西南官话。 [317-318]截至2025年3月，成都市下辖12个区、3个县、代管5个县级市。截至2024年末，成都市常住人口2147.4万人，常住人口城镇化率80.8% [366]。
-                       成都市地势由西北向东南倾斜，西部以深丘和山地为主，东部主要由平原、台地和部分低山丘陵组成，是成都平原的腹心地带，属亚热带季风气候区，热量充足，雨量丰富，四季分明，雨热同期。早在距今约4500年至3700年以前，成都平原已出现被后世称为“宝墩文化”的一系列古蜀先民聚落中心。 [328]前316年，秦灭蜀，始设蜀郡并成都县，为蜀郡治所。前311年，修筑大城和少城，被后世公认为是有文献记载的成都建城标志。1921年，始设市政筹备处，1928年，成都正式设市。 [</p>
-                    <p><span class="highlight">都江堰</span> -都江堰，位于四川省成都市都江堰市城西，坐落在成都平原西部的岷江上， [14]是由渠首枢纽（鱼嘴、飞沙堰、宝瓶口）、灌区各级引水渠道，各类工程建筑物和大中小型水库和塘堰等所构成的一个庞大的工程系统， [8]渠首占地面积200余亩。 [3]它担负着四川盆地中西部地区7市（地）40县（市、区）1130万余亩农田的灌溉、成都市多家重点企业和城市生活供水，以及防洪、发电、漂水、水产、养殖、林果、旅游、环保等多项目标综合服务，是四川省国民经济发展不可替代的水利基础设施</p>
-                    <p><span class="highlight">青城山</span> - 青城山（Mount Qingcheng），世界文化遗产青城山-都江堰的主体景区、全国重点文物保护单位、国家重点风景名胜区、国家AAAAA级旅游景区、全真龙门派圣地，十大洞天之一，中国四大道教名山之一，五大仙山之一，成都十景之一。 [1]</p>
-                    <p><span class="highlight">杜甫草堂</span> - 杜甫草堂，是中国唐代大诗人杜甫流寓成都时的故居，位于四川省成都市青羊区青华路37号 [16]。杜甫先后在此居住近四年，创作诗歌240余首。唐末诗人韦庄寻得草堂遗址，重结茅屋，使之得以保存，宋元明清历代都有修葺扩建。</p>
-                    <p><span class="highlight">武侯祠</span> - 武侯祠（Wuhou Shrine），位于四川省成都市武侯区武侯祠大街231号，始建于蜀汉章武元年（221年），原是纪念诸葛亮的专祠，亦称孔明庙、诸葛祠、丞相祠等，后合并为君臣合祀祠庙 </p>
-                
-                </div>
-                
-                <div class="image-gallery">
-                    <div class="gallery-item">
-                        <img src="https://img0.baidu.com/it/u=1971817563,531281102&fm=253&fmt=auto&app=138&f=JPEG?w=800&h=1422" alt="都江堰">
-                        <div class="caption">都江堰</div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="https://img2.baidu.com/it/u=130477783,3340912014&fm=253&fmt=auto&app=138&f=JPEG?w=800&h=1333" alt="青城山">
-                        <div class="caption">青城山</div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="https://img0.baidu.com/it/u=608217289,4290815053&fm=253&fmt=auto&app=138&f=JPEG?w=722&h=832" alt="杜甫草堂">
-                        <div class="caption">杜甫草堂</div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="https://img0.baidu.com/it/u=1922494900,2163849598&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=751" alt="武侯祠">
-                        <div class="caption">武侯祠</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-<!-- 重庆地区 -->
-     <section id="chongqing" class="content-section">
-        <div class="container">
-            <div class="region-header">
-                <h2><i class="fas fa-city"></i> “永远做中国人民和中华民族的主心骨”——写在中国共产党成立104周年之际</h2>
-                <p>习近平回信勉励西藏林芝市巴宜区林芝镇嘎拉村全体村民 切实维护好民族团结 创造更加幸福美好的生活
-来源：新华社 责任编辑：孙智英 发布：2025-06-29 10:49:34
-
-手机看分享到
-新华社北京6月29日电 近日，中共中央总书记、国家主席、中央军委主席习近平给西藏林芝市巴宜区林芝镇嘎拉村全体村民回信，对他们提出殷切期望。
-
-习近平在回信中说，看到来信，想起4年前的嘎拉村之行，漂亮整洁的村庄、热情淳朴的村民，给我留下深刻印象。得知这几年村里又有新变化，乡亲们的收入增加了，为你们高兴。
-
-习近平强调，大家在信里说得好，看着北斗星走不迷路，跟着共产党走会幸福。希望你们在党的兴边富民好政策引领下，切实维护好民族团结，创造更加幸福美好的生活，把雪域高原的自然美景保护好，把“桃花村”品牌擦得更亮，为建设繁荣稳固的祖国边疆贡献力量。
-
-2021年7月，习近平总书记在西藏考察时曾到嘎拉村看望慰问村民群众。嘎拉村因山野桃花而闻名。按照习近平总书记指引的方向，该村近年来在发展乡村旅游、壮大集体经济、促进民族团结等方面取得了新的成绩，获得“全国民族团结进步模范集体”等荣誉。今年是西藏自治区成立60周年，嘎拉村全体村民近日给习近平总书记写信，汇报村里发展变化情况，表达感恩奋进、创造更加美好生活的决心。
-
-回信全文
-
-习近平给西藏林芝市巴宜区林芝镇嘎拉村全体村民的回信
-
-西藏林芝市巴宜区林芝镇嘎拉村全体村民：
-
-看到来信，想起4年前的嘎拉村之行，漂亮整洁的村庄、热情淳朴的村民，给我留下深刻印象。得知这几年村里又有新变化，乡亲们的收入增加了，为你们高兴。
-
-大家在信里说得好，看着北斗星走不迷路，跟着共产党走会幸福。希望你们在党的兴边富民好政策引领下，切实维护好民族团结，创造更加幸福美好的生活，把雪域高原的自然美景保护好，把“桃花村”品牌擦得更亮，为建设繁荣稳固的祖国边疆贡献力量。
-
-</p>
-            </div>
-            
-            <div class="region-content">
-                <div class="text-content">
-                    <h3>军营观察丨探寻谈心交心的时代新解</h3>
-                    <p>连队有本《谈心交心工作指南》
-
-■袁笑  解放军报记者  王越
-
-轻轻翻开陈列在陆军某旅防化连荣誉室里的《谈心交心工作指南》，一张旧报纸映入记者眼帘。
-
-上世纪六十年代，该连前身部队开展谈心交心活动。毛泽东同志在有关新闻报道上，作出“开展谈心活动，这个方法很好”的批示，表示肯定。
-
-自此，谈心交心活动迅速在全军推广开来，成为我军思想政治教育工作的一项重要方法。这份工作指南，由连队官兵梳理形成，历经岁月，传承至今。
-
-“谈心交心就像‘粘合剂’，可以让连队官兵团结成一块坚硬的钢铁。”该旅领导介绍，60多年来，这个连队历经风风雨雨，始终注重赓续优良传统，在日复一日的工作实践中总结形成“带兵要带心，带心要知心，知心要谈心，越谈越贴心”“有事解疙瘩，无事拉家常；无事常交流，有事好化解”等经验，以及“谈心交心9步法”“知心贴心20项活动”等做法，助力谈心交心持续释放效能。
-
-“第一次翻看工作指南，我就被上面的文字吸引了……”从入伍时的青涩懵懂，到如今成长为独当一面的思想骨干，二级上士张续感慨地说，“在做好一人一事思想工作的实践中，这本工作指南正在不断书写新的篇章。我也在个人的成长中，见证了谈心交心活动历久弥新的魅力。”
-
-进入新时代，连队带兵人着眼密切内部关系、增进团结友爱，坚持用真心带兵心，用真心换真情，放下架子、放平心态，面对面、心贴心地进行思想交流和情感沟通，搭起思想共振、心灵共鸣、行为共荣的“连心桥”。
-
-在谈心交心活动的大力推动下，连队凝聚力、战斗力持续提升。近年来，连队先后上高原、进戈壁、战大漠、斗风沙，顺利完成高寒环境下课目示范、新武器效能验证、战斗力检验评估等任务。谈心交心、知心贴心迸发出的精神力量，激励着官兵一往无前、奋勇拼搏。</p>
-                    <p><span class="highlight">在马克思主义军事理论中孕育涵养。</span> 繁荣发展向战为战的强军文化
-
-■国防大学习近平新时代中国特色社会主义思想研究中心
-
-文化兴则国运兴，文化强则军队强。党的十八大以来，习主席站在党和国家事业发展全局战略高度，深刻把握军事建设基本规律，明确提出繁荣发展强军文化。在党的创新理论指引下，波澜壮阔的强军实践孕育形成了具有我军特色、彰显时代精神、支撑打赢制胜的强军文化，赋予我军自信自强、敢斗善斗、奋进奋发的崭新精神气质。新征程上繁荣发展强军文化，必须紧紧扭住向战为战，立起砺战打赢指向，激发战斗血性，锤炼战斗作风，不断提升强军文化对战斗力的贡献率。
-
-一
-
-求木之长者，必固其根本；欲流之远者，必浚其泉源。强军文化为战而生、向战而行，在铁血熔炉中百炼成钢，于代代传承中凝心聚魂，在时代脉搏中奔涌向前，始终紧跟备战打仗、奋斗强军的步伐发展。
-
-在马克思主义军事理论中孕育涵养。强军文化坚守马克思主义军事理论思想精髓，以马克思主义战争观为理论根基，坚持“战争是政治的继续”“人民群众是战争主体”等价值理念，通过政治教育铸魂、战斗精神培育等路径，走具有我军特色的军事文化发展路子。马克思主义认为军队是为无产阶级解放事业服务的，强军文化坚持党指挥枪的根本原则，强化官兵“为谁扛枪、为谁打仗”的政治自觉、思想自觉、行动自觉。马克思主义强调正义战争是符合人民根本利益的战争，强军文化蕴含能打仗、打胜仗的正义担当，体现维护和平、遏制战争的正义力量。马克思主义要求辩证看待人与武器的关系，强军文化注重人与武器的辩证统一，既培育战斗精神又助力推动新质战斗力发展。
-
-在我军革命文化中赓续传承。革命文化是党领导人民在长期的革命斗争中形成的宝贵精神财富，不仅塑造了人民军队的红色基因、铸就了军魂，还为强军文化提供了丰厚的精神滋养。回望硝烟弥漫的峥嵘岁月，那些耳熟能详的战斗故事，无不蕴含着革命文化的胜战因子，成为孕育强军文化向战为战的丰沃土壤。历史的车轮滚滚向前，文化的力量随着时间的积淀而历久弥坚。繁荣发展强军文化，必须从革命文化中汲取营养和力量，助力广大官兵不断提高政治觉悟、激发爱国热情、培塑战斗精神、强化使命担当，在胜战基因薪火相传中提高部队向心力、凝聚力和战斗力。
-
-在新时代强军实践中发展壮大。党的十八大以来，在党的坚强领导下，人民军队聚焦主责主业，归正工作重心，鲜明立起战斗力这个唯一的根本的标准，深入开展战斗力标准大讨论，引导官兵聚焦向战为战，激发能战胜战的血性；大力推进实战化军事训练，扎实做好军事斗争准备，展现了维护国家主权和领土完整的坚强决心和坚定意志；大力纠治和平积弊，狠抓战斗力建设治虚打假，常态开展训练作风整治，推动训风演风考风根本好转；积极探索构建多渠道培育战斗精神长效机制，全方位提振新时代革命军人精气神。繁荣发展强军文化，必须以强军实践为创新载体，因应时势变化，坚持在守正中创新，主动融入世界军事革命的时代浪潮，积极回应现代战争的时代要求，在新质战斗力的淬火锻造中不断丰富发展。</p>
+    </nav>
+    
+    <!-- 内容容器 -->
+    <div class="content-container">
+        <!-- 首页自定义内容 -->
+        <div id="home" class="content-section">
+            <div class="home-content">
+                <div class="welcome-section">
+                    <h2>医院草菅人命！患者离世原因成谜，家属泣诉维权无门</h2>
+                    <p>医院本是为人类服务的救命良药，是为人民幸福生活谋福祉的救馆地，是美好家园的维持者。然而却在邢台市人民医院南院区因医术不当，把生命当作儿戏，草芥人命，对家属及病人草草了事，不负责任，不正视双方的合法权益，对家属进行推搡扯皮，推卸责任，践踏生命的尊严，让普通老百姓生活支离破碎，陷入噩梦般的深渊。这场腐败落寞且令人发指的致命陷阱，让生命沦为一个牺牲品，成为败坏者的盾牌，让老百姓的痛哭长号在冤屈的卑劣之中!</p>
                     
+                    <h2>一、事件回顾：患者离世，医院态度冷漠</h2>
+                    <p>2025年6月17日，国永章先生因食欲不振全身乏力被送往邢台市人民医院北院区做检查进行治疗，诊断结果为转氨酶数值偏大，乙肝损伤随后国永章先生被安排在南院区中西医肝病科住院。然而，在入院10余天症状不仅没有一点缓解，反而导致全身黄胆发烧。这10来天的努力病情不降反升，让家属非常担心国先生的安危。然而在26号主治医生李鑫告知家属需要做人工肝治疗再次净化缓解转氨酶数值，随后27号告知家属上午做置管治疗下午做人工肝治疗。弹指之间，又告知家属27号做置管治疗28号做人工肝治疗。在家属希望国先生能药到病除，只能无奈地同意医院的统一治疗。但令人发指的却是27号上午国先生非常清醒，却在简陋的处置室做置管治疗时10分钟后医护人员推门寻找药品和仪器，源源不断的人进入处置室，得来耳边的结果却是人已经休克，但是抢救回来了，有意识只是血压低。在11点半左右，医院人员告知家属上呼吸机，有生命危险，家属同意过后过了大概10分钟告知人已死亡。家属苦苦等待，极力盼望，迎来的只有人确定不行了的结果。更令家属难以接受的是，医院方面始终未明确告知死亡原因，仅以简单的话语搪塞，只是一味的拖延让等待医化的到来，甚至一味的混淆家属的判断指明这个过程和结果正常，并且拒绝提供完整病历。  </p>
+                    <img src="image\p1.png" class="welcome-section-image">
+                    <img src="image\p2.png" class="welcome-section-image">
+                    <h2>二、家属质疑：医院存在重大过失</h2>
+                    <p>据家属反映，国先生入院后，医院对国先生的治疗手法不是手术，仅简单做了置管缓解转氨酶数值，然而却在仅仅的几十分钟里出现巨大变故，上午安详无事，中午却溘然长逝。当然，令人匪夷所思的是家属希望医院提供病例和具体抢救措施，医院却拒绝提供，国先生的病情在几小时内急剧恶化，最终“抢救”无效死亡。在没有任何预见性的情况下以及医院的拖延，家属怀疑，医院病历造假。 </p>
+                    <img src="image\p3.png" class="welcome-section-image">
+                    <h2>三、医院推辞：医院回应含糊其辞，相关部门介入调查</h2>
+                    <p>国先生的离世在此次过程中没有任何征兆，一个完好的正常人突然溘然长逝，医院在人已经死亡的前提下才让家属签署病危通知书以及尸体解剖通知书。这是对患者和家属的不尊重。随后家属报警想要一个合理的解释，长达5个小时后提供了病例以及对接。期间尸体一直放在简陋的处置室，等来的结果却是肺衰竭。患者进行的治疗是置管，得到的结论却是无稽之谈。</p>
+                    <img src="image\p4.png" class="welcome-section-image">
+                    <h2>四、事件争议：医院对应措施草草了事</h2>
+                    <p>据家属显示，国先生在置管阶段时是冲冲忙忙推进设施以及拿取药物，如此可见，这个简陋的处置室连基本的急救设施都不齐全，然而病人的安危却是在与时间做斗争，这无疑是将患者的生命安全放置于危险境地，不仅是对家属的不负责任，更是对病人生命垂危的不尊重。人的生命是无价之宝，在为人们服务的医院却对病人安危草草了事，这是极大的对生命的不屑一顾。这些事件暴露出部分医疗机构管理混乱、责任心缺失，甚至对患者生命极度漠视。沦为社会公民，我们是要服务于公民，尊重于公民，国先生的家属只是想要一个合理的解释，公正的真相，让家属合情合理地明白事情的来之去脉，让逝者安息。如此简单情形，医院却不尊重家属对真理的渴望，妄想让真相石沉大海。医院的不合理化措施却让普通老百姓承受痛苦的边缘。这场悲剧的发生让受害者付出无穷无尽的悲伤，医院需还国永章先生一个公道，还国先生家属一个公道，还真正医疗事业一个公道!</p>
+                    <img src="image\p5.png" class="welcome-section-image">
+                    <img src="image\p6.png" class="welcome-section-image">
+                    <h2>五、社会反思：医疗乱象何时休</h2>
+                    <p>近年来，类似“医院草菅人命”的新闻屡见不鲜。医院本应是守护生命的最后防线，却因某些人的冷漠与失职，让病患在绝望中坠入更深的深渊。当白衣天使的外衣下藏着麻木不仁的灵魂，当消毒水味掩盖了人性溃烂的气息，那些被草率处置的病例、被敷衍塞责的家属、在走廊担架上无声消逝的生命，都成了这个时代最刺眼的医疗耻辱。每一个因疏忽而凋零的生命背后，都是一个被碾碎的家庭，更是对整个医疗体系信任的彻底崩塌——这不是简单的制度漏洞，而是对人们誓言最彻底的背叛。当救死扶伤沦为机械流程，当患者沦为病历上的一个数字，这样的医院，与殡仪馆何异？ 生命无价，医疗机构的职责是救死扶伤，而非草草了事。我们希望，国先生的悲剧不再重演，每一个生命都能得到应有的尊重，让普通老百姓能真真正正的合法维护自己的权益!</p>
+                </div>
+                
+                <div class="custom-features">
+                    <div class="feature-card">
+                        <i class="fas fa-globe-asia"></i>
+                        <h3>全球视野</h3>
+                        <p>我们的记者遍布全球50多个国家和地区，为您带来第一手的国际新闻报道，让您足不出户了解世界动态。</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <i class="fas fa-bolt"></i>
+                        <h3>实时报道</h3>
+                        <p>7×24小时不间断更新，重大新闻事件第一时间发布，确保您获取最新、最及时的新闻资讯。</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <i class="fas fa-newspaper"></i>
+                        <h3>深度解析</h3>
+                        <p>资深记者团队为您提供深入、客观的新闻分析和评论，解读政策背景，剖析事件本质。</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <i class="fas fa-mobile-alt"></i>
+                        <h3>多屏互动</h3>
+                        <p>支持电视、电脑、手机、平板等多种终端访问，随时随地获取新闻资讯，满足不同场景需求。</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
         
+        <!-- 国内新闻 -->
+        <div id="politics" class="news-category">
+            <div class="category-header">
+                <h2>国内新闻</h2>
+            </div>
+            <div class="news-grid">
+                <div class="news-card">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1508780709619-79562169bc64?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="新闻图片">
+                    </div>
+                    <div class="card-content">
+                        <h3><a href="#">习近平主持中央政治局会议 分析研究当前经济形势</a> <span class="hot-tag">热点</span></h3>
+                        <p>中共中央政治局召开会议，分析研究当前经济形势和经济工作，部署下半年经济工作重点任务...</p>
+                        <div class="news-meta">
+                            <span><i class="far fa-clock"></i> 2023-06-28</span>
+                            <span><i class="far fa-eye"></i> 5.8万</span>
+                        </div>
+                    </div>
                 </div>
                 
-                <div class="image-gallery">
-                    <div class="gallery-item">
-                        <img src="http://www.81.cn/yw_208727/_attachment/2025/06/30/16394284_1203375cbf6aefc579e48c2baf789a90.jpg" alt="军事力量">
-                        <div class="caption">军事力量</div>
+                <div class="news-card">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="新闻图片">
+                    </div>
+                    <div class="card-content">
+                        <h3><a href="#">国务院印发《关于促进民营经济发展壮大的意见》</a></h3>
+                        <p>意见提出31条具体措施，进一步优化民营经济发展环境，激发民营经济创新活力...</p>
+                        <div class="news-meta">
+                            <span><i class="far fa-clock"></i> 2023-06-27</span>
+                            <span><i class="far fa-eye"></i> 4.2万</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="news-card">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="新闻图片">
+                    </div>
+                    <div class="card-content">
+                        <h3><a href="#">全国人大常委会启动乡村振兴促进法执法检查</a> <span class="hot-tag">热点</span></h3>
+                        <p>执法检查组将重点检查乡村产业发展、人才支撑、文化繁荣、生态保护、组织建设等方面...</p>
+                        <div class="news-meta">
+                            <span><i class="far fa-clock"></i> 2023-06-26</span>
+                            <span><i class="far fa-eye"></i> 3.9万</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="news-card">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1599008633840-052c6f0b1c04?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="新闻图片">
+                    </div>
+                    <div class="card-content">
+                        <h3><a href="#">我国成功发射遥感三十六号卫星</a></h3>
+                        <p>卫星顺利进入预定轨道，发射任务获得圆满成功，将主要用于科学试验、国土资源普查等领域...</p>
+                        <div class="news-meta">
+                            <span><i class="far fa-clock"></i> 2023-06-25</span>
+                            <span><i class="far fa-eye"></i> 3.5万</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="news-card">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="新闻图片">
+                    </div>
+                    <div class="card-content">
+                        <h3><a href="#">全国夏粮再获丰收，总产量创新高</a></h3>
+                        <p>今年全国夏粮产量达到1.4亿吨，同比增长2.1%，为保障国家粮食安全打下坚实基础...</p>
+                        <div class="news-meta">
+                            <span><i class="far fa-clock"></i> 2023-06-24</span>
+                            <span><i class="far fa-eye"></i> 3.1万</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="news-card">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1589652717521-10c0d092dea9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="新闻图片">
+                    </div>
+                    <div class="card-content">
+                        <h3><a href="#">庆祝中国共产党成立102周年大会在京隆重举行</a> <span class="hot-tag">头条</span></h3>
+                        <p>习近平总书记发表重要讲话，强调全党同志要不忘初心、牢记使命，为实现中华民族伟大复兴的中国梦不懈奋斗...</p>
+                        <div class="news-meta">
+                            <span><i class="far fa-clock"></i> 2023-06-23</span>
+                            <span><i class="far fa-eye"></i> 8.2万</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-    <!-- 内蒙古地区 -->
-     <section id="neimenggu" class="content-section">
-        <div class="container">
-            <div class="region-header">
-                <h2><i class="fas fa-city"></i> NBA又有了“中国大个子”</h2>
-                <p>图片说明：27日，杨瀚森（16号）亮相开拓者队选秀新闻发布会。 （视觉中国(20.100, 0.25, 1.26%)）
-
-本报特约记者 李佳寅
-
-美国当地时间27日，NBA波特兰开拓者队为中国球员杨瀚森举行新闻发布会，正式欢迎这位2025届NBA新秀加盟球队，杨瀚森手持16号战袍亮相。在上周的NBA选秀中，杨瀚森在自己20岁生日当天（6月26日）以首轮第16顺位被波特兰开拓者队选中，成为中国篮球历史上继姚明（2002年状元）、易建联（2007年第6顺位）后的第三位在NBA首轮秀中被选中的球员，也是时隔9年再有中国球员通过选秀登陆NBA，引发外媒关注。
-
-会向姚明和约基奇学习
-
-杨瀚森称，自己在一个月前抵达波特兰参加选秀试训时，他就立刻爱上了这座城市：“我知道这是个多雨的城市，可以营造很好的睡眠环境，而且这里的风景真的很美。”发布会上，杨瀚森解释自己名字中“瀚森”两个字代表“一片广阔的森林”，这位中国新秀称来到波特兰是“美妙且美好的联系”，也是“命运理想的安排”，因为这座城市以花旗松森林而闻名。
-
-美国有线电视新闻网（CNN）称，23年前的选秀大会，姚明以状元秀身份开启了他在休斯敦火箭队的传奇NBA生涯。现在就将杨瀚森与姚明进行比较似乎为时尚早，但这位年轻人已经展示了自己的传球视野、篮板能力和3分投射，他在攻防两端都具备不俗潜力。因为这些打法与约基奇相似，杨瀚森也被称作“中国约基奇”。
-
-在回答记者有关“打球风格与姚明还是约基奇相似”的问题时，杨瀚森说：“大家对我的称呼和（与他们的）比较，我觉得是对我的赞扬和鼓励。我希望尽可能地去学习这些伟大的球员的长处，然后吸收消化努力成长。”
-
-为何是开拓者?
-
-“我15岁进入青岛青年队，他们告诉我‘你可以打CBA’。所以我就每天训练，尽可能做好每一步，尽可能努力打好球，打好职业。”杨瀚森在发布会上这样表示。2021年，杨瀚森加盟青岛男篮，近两个赛季连续入选CBA全明星首发阵容，蝉联年度最佳星锐球员并入选国内球员第一阵容。国家队方面，2023年U19男篮世界杯，杨瀚森场均贡献12.6分、10.4个篮板、4.7次助攻、5次封盖。2024年2月，杨瀚森迎来成年国家队首秀，拿下13分4篮板4助攻。
-
-为了今年的NBA选秀，杨瀚森先后参加开拓者、爵士、太阳、雄鹿、魔术等14支NBA球队的试训。杨瀚森在发布会上称，“球队（开拓者）关注我两年了，第一年打CBA的时候，他们就远赴中国看我打球，我对此非常感激和感动。”
-
-哥伦比亚广播公司（CBS）26日称，杨瀚森的特质促成开拓者队在选秀大会上制造“最大冷门”。早在一年半以前，开拓者队副总经理麦克·施密茨就出现在了CBA青岛队比赛的场边。开拓者队将杨瀚森视为“独特且全能”的球员，开拓者队总经理克罗宁表示，“杨瀚森拥有不错的技术能力，传球能力、篮球智商、低位进攻以及外线持球能力都很出色。在防守端，他是个非常聪明的球员，凭借体型和智商，他在低位可以展现出多面性。”
-
-球队主教练比卢普斯这样称赞“新弟子”：“杨瀚森是个非常出色的年轻球员。和大多数被选中的球员一样年轻，但他能做出很多不可思议的事情。我最钦佩的一点就是他的篮球智商，他打球的方式很正确。是一个很棒的队友，他在场上打球一直在为队友寻找机会，会让队友变得更好。”
-
-“吃饭、睡觉、打游戏。”当被问及球场之外的爱好时，杨瀚森这样笑着说。美国《体育画报》28日称，很少有人能体会超过2.1米的身高是什么感受，也很难明白首轮秀这样的经历会给自己带来什么。但杨瀚森幽默的回答让不少球迷倍感亲切，拉近了他与NBA球迷的距离。菲律宾《每日问询者报》网站28日称，杨瀚森在发布会上的风趣表现证明，他可以很好地融入美国文化。
-
-未来的“超级顶薪”球员
-
-有薪资网站显示，杨瀚森的四年薪资预计为2139万美元。CBS指出，时间会证明杨瀚森会成为“中国约基奇”还是一个可能挣扎于NBA对抗中的中锋。比卢普斯对此表示：“杨瀚森需要变得更好，学习战术，学习语言。球队内线竞争激烈，这一年他会以学习为主。”根据夏季联赛赛程，开拓者队将于7月12日首战金州勇士队。
-
-“杨瀚森准备好征战NBA了吗？”美国《纽约时报》分析，杨瀚森的优势在于身高、传球视野和柔和手感；但他重心较高，缺乏爆发力和横向移动能力。参考球场上取得成功的中锋——包括约基奇和唐斯在内，他们的风格都足够强硬，可以利用身体挤压对手空间，目前的杨瀚森看上去缺乏这样的对抗。杨瀚森还会面临严峻的防守挑战。
-
-开拓者球迷网站Blazer's Edge称，由于杨瀚森此前效力于中国的CBA联赛，除了简短集锦外，大多数美国球迷几乎没看过他打球，也很难判断他在CBA取得的成功能在NBA兑现多少。比卢普斯表示，由于开拓者队目前在中锋位置上人员拥挤，这名新秀初期的出场时间可能受限。不过比卢普斯同时表示，杨瀚森不是那种需要多年在冷板凳上接受打磨的“半成品”，当他被派上场时，这位年轻新秀就能够为球队带来明显变化。
-
-《马卡报》称，杨瀚森赛季初可能会在发展联盟中成长，但如果他能在这段时间提升防守实力，杨瀚森可能会在2026年获得轮换时间。如果杨瀚森能够达到预期，他在2029年时有望成为一位“超级顶薪”球员。更为重要的是，杨瀚森可能会重新点燃中国球员进军NBA的热情，并同时将开拓者队打造成西部联盟的一支劲旅。</p>
+        
+        <!-- 国际新闻 -->
+        <div id="international" class="news-category">
+            <div class="category-header">
+                <h2>国际新闻</h2>
             </div>
-            
-            <div class="region-content">
-                <div class="text-content">
-                    <h3>WTT萨格勒布站国乒四项进决赛全居亚 三站挑战赛未取一冠</h3>
-                    <p>北京时间6月29日深夜，WTT常规挑战赛萨格勒布站收官，以非主力阵容出战的国乒本站再获四个亚军。至此，在连续三周的WTT赛事中，中国队在未派主力的情况下，未能斩获任何冠军。陈垣宇不敌张本智和
-
-　　在本月9日至15日的WTT常规挑战赛斯科普里站中，国乒遣上一众新人小将，跻身三项决赛，但未能斩获冠军。其中，温瑞博孤身晋级男单8强，在决赛中遭2号种子杜达逆转，范姝涵则在女单决赛中遭法国老将袁嘉楠“零封”。混双组合曾蓓勋/冯怡璇从资格赛一路杀进决赛，以两分之差惜败于头号种子卡尔松/卡尔伯格，国乒男双、女双则无缘决赛。
-
-　　随后一周级别更高的WTT球星挑战赛卢布尔雅那站，国乒派出了实力更强的阵容，由钱天一、向鹏领衔“第二梯队”出战。但面对实力更强劲的对手，中国队非主力球员明显技逊一筹，无人晋级决赛。其中，男单仅周启豪晋级8强，女单仅外卡选手陈熠晋级4强，男双、混双甚至没有选手闯过第一轮。</p>
-                    
-                    
+            <div class="news-grid">
+                <div class="news-card">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1551818255-e6e109fbcab4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="新闻图片">
+                    </div>
+                    <div class="card-content">
+                        <h3><a href="#">金砖国家领导人第十五次会晤在南非举行</a></h3>
+                        <p>本次会晤主题为"金砖与非洲：深化伙伴关系，促进彼此增长，实现可持续发展，加强包容性多边主义"</p>
+                        <div class="news-meta">
+                            <span><i class="far fa-clock"></i> 2023-06-29</span>
+                            <span><i class="far fa-eye"></i> 3.5万</span>
+                        </div>
+                    </div>
                 </div>
                 
-                <div class="image-gallery">
-                    <div class="gallery-item">
-                        <img src="https://n.sinaimg.cn/spider20250630/267/w640h427/20250630/6a9c-846ec119aee492f4ac1a18fff893cf65.jpg" alt="杨瀚森">
-                        <div class="caption">杨瀚森</div>
+                <div class="news-card">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1600267175161-cfaa711b4a81?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="新闻图片">
+                    </div>
+                    <div class="card-content">
+                        <h3><a href="#">联合国报告：全球可持续发展目标面临严峻挑战</a> <span class="hot-tag">热点</span></h3>
+                        <p>报告指出，受多重危机影响，全球在消除贫困、应对气候变化等领域的进展出现倒退...</p>
+                        <div class="news-meta">
+                            <span><i class="far fa-clock"></i> 2023-06-28</span>
+                            <span><i class="far fa-eye"></i> 2.8万</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="news-card">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="新闻图片">
+                    </div>
+                    <div class="card-content">
+                        <h3><a href="#">第19届亚运会筹备工作进入最后冲刺阶段</a></h3>
+                        <p>杭州亚运会各项准备工作有序推进，56个竞赛场馆全部完成赛事功能验收，赛事组织、服务保障等工作基本就绪...</p>
+                        <div class="news-meta">
+                            <span><i class="far fa-clock"></i> 2023-06-27</span>
+                            <span><i class="far fa-eye"></i> 2.5万</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="news-card">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1463171379579-3fdfb86d6285?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="新闻图片">
+                    </div>
+                    <div class="card-content">
+                        <h3><a href="#">欧洲央行宣布加息50个基点应对通胀</a></h3>
+                        <p>欧洲央行宣布加息50个基点，为今年第三次加息，旨在应对持续高企的通胀压力...</p>
+                        <div class="news-meta">
+                            <span><i class="far fa-clock"></i> 2023-06-26</span>
+                            <span><i class="far fa-eye"></i> 2.3万</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="news-card">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1534536281715-e28d76689b4d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="新闻图片">
+                    </div>
+                    <div class="card-content">
+                        <h3><a href="#">中美举行高层会谈，就贸易问题达成新共识</a></h3>
+                        <p>在日内瓦举行的中美高层经贸会谈取得积极进展，双方就关税问题达成阶段性协议，贸易战有望缓解...</p>
+                        <div class="news-meta">
+                            <span><i class="far fa-clock"></i> 2023-06-25</span>
+                            <span><i class="far fa-eye"></i> 2.1万</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="news-card">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1589652717521-10c0d092dea9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="新闻图片">
+                    </div>
+                    <div class="card-content">
+                        <h3><a href="#">全球气候峰会达成历史性协议，2050年前实现碳中和</a> <span class="hot-tag">头条</span></h3>
+                        <p>来自197个国家的代表经过两周紧张谈判后，终于就全球减排目标达成一致...</p>
+                        <div class="news-meta">
+                            <span><i class="far fa-clock"></i> 2023-06-24</span>
+                            <span><i class="far fa-eye"></i> 5.6万</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-
+        
+        <!-- 财经新闻 -->
+        <div id="finance" class="news-category">
+            <div class="category-header">
+                <h2>财经新闻</h2>
+            </div>
+            <div class="news-grid">
+                <div class="news-card">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="新闻图片">
+                    </div>
+                    <div class="card-content">
+                        <h3><a href="#">央行宣布降息0.25个百分点，刺激经济增长</a> <span class="hot-tag">热点</span></h3>
+                        <p>为应对经济下行压力，央行决定下调基准利率，这是年内首次降息，预计将释放数千亿流动性...</p>
+                        <div class="news-meta">
+                            <span><i class="far fa-clock"></i> 2023-06-29</span>
+                            <span><i class="far fa-eye"></i> 4.8万</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="news-card">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="新闻图片">
+                    </div>
+                    <div class="card-content">
+                        <h3><a href="#">新能源汽车销量创新高，市场占比突破30%</a></h3>
+                        <p>5月份新能源汽车销量达78万辆，同比增长120%，市场渗透率首次突破30%，行业迎来爆发式增长...</p>
+                        <div class="news-meta">
+                            <span><i class="far fa-clock"></i> 2023-06-28</span>
+                            <span><i class="far fa-eye"></i> 3.9万</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="news-card">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="新闻图片">
+                    </div>
+                    <div class="card-content">
+                        <h3><a href="#">人民币汇率保持基本稳定，外汇市场韧性增强</a></h3>
+                        <p>国家外汇管理局表示，我国外汇市场韧性增强，人民币汇率在合理均衡水平上保持基本稳定...</p>
+                        <div class="news-meta">
+                            <span><i class="far fa-clock"></i> 2023-06-27</span>
+                            <span><i class="far fa-eye"></i> 3.2万</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="news-card">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="新闻图片">
+                    </div>
+                    <div class="card-content">
+                        <h3><a href="#">上半年A股IPO融资额超2100亿元，科创板占比过半</a> <span class="hot-tag">热点</span></h3>
+                        <p>今年上半年A股市场IPO融资规模达2150亿元，其中科创板IPO融资额占比超过50%...</p>
+                        <div class="news-meta">
+                            <span><i class="far fa-clock"></i> 2023-06-26</span>
+                            <span><i class="far fa-eye"></i> 2.9万</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="news-card">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="新闻图片">
+                    </div>
+                    <div class="card-content">
+                        <h3><a href="#">国家发改委：将抓紧制定出台恢复和扩大消费政策</a></h3>
+                        <p>国家发改委表示，将抓紧制定出台恢复和扩大消费的政策，围绕稳定大宗消费、促进服务消费等重点领域发力...</p>
+                        <div class="news-meta">
+                            <span><i class="far fa-clock"></i> 2023-06-25</span>
+                            <span><i class="far fa-eye"></i> 2.7万</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="news-card">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="新闻图片">
+                    </div>
+                    <div class="card-content">
+                        <h3><a href="#">我国跨境电商进出口规模5年增长近10倍</a> <span class="hot-tag">头条</span></h3>
+                        <p>海关总署数据显示，近5年我国跨境电商进出口规模增长近10倍，成为外贸发展新动能...</p>
+                        <div class="news-meta">
+                            <span><i class="far fa-clock"></i> 2023-06-24</span>
+                            <span><i class="far fa-eye"></i> 4.5万</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 科技新闻 -->
+        <div id="tech" class="news-category">
+            <div class="category-header">
+                <h2>科技新闻</h2>
+            </div>
+            <div class="news-grid">
+                <div class="news-card">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1677442135722-5f3e7d46ad5d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="新闻图片">
+                    </div>
+                    <div class="card-content">
+                        <h3><a href="#">人工智能新突破：AI模型可准确预测地震</a> <span class="hot-tag">热点</span></h3>
+                        <p>科学家开发出新型AI模型，能提前72小时预测地震，准确率达85%。该技术有望挽救无数生命...</p>
+                        <div class="news-meta">
+                            <span><i class="far fa-clock"></i> 2023-06-29</span>
+                            <span><i class="far fa-eye"></i> 5.2万</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="news-card">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="新闻图片">
+                    </div>
+                    <div class="card-content">
+                        <h3><a href="#">量子计算机实现重大突破，算力提升千倍</a></h3>
+                        <p>我国科学家成功研制出新一代量子计算机原型机，其运算速度比现有超级计算机快1000倍，应用前景广阔...</p>
+                        <div class="news-meta">
+                            <span><i class="far fa-clock"></i> 2023-06-28</span>
+                            <span><i class="far fa-eye"></i> 4.1万</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="news-card">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="新闻图片">
+                    </div>
+                    <div class="card-content">
+                        <h3><a href="#">6G技术研发取得重要进展，预计2030年商用</a></h3>
+                        <p>我国6G技术研发取得重要突破，在太赫兹通信、智能超表面等关键技术领域实现创新...</p>
+                        <div class="news-meta">
+                            <span><i class="far fa-clock"></i> 2023-06-27</span>
+                            <span><i class="far fa-eye"></i> 3.6万</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="news-card">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="新闻图片">
+                    </div>
+                    <div class="card-content">
+                        <h3><a href="#">我国成功发射首颗人工智能卫星</a> <span class="hot-tag">热点</span></h3>
+                        <p>该卫星搭载了自主研发的星载智能处理系统，可在轨完成图像识别、数据分析等任务，大幅提高观测效率...</p>
+                        <div class="news-meta">
+                            <span><i class="far fa-clock"></i> 2023-06-26</span>
+                            <span><i class="far fa-eye"></i> 3.3万</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="news-card">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="新闻图片">
+                    </div>
+                    <div class="card-content">
+                        <h3><a href="#">全球首个"数字人"医生上岗，可24小时接诊</a></h3>
+                        <p>基于人工智能技术的"数字人"医生在多家医院上岗，可提供24小时不间断的诊疗咨询服务...</p>
+                        <div class="news-meta">
+                            <span><i class="far fa-clock"></i> 2023-06-25</span>
+                            <span><i class="far fa-eye"></i> 3.0万</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="news-card">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="新闻图片">
+                    </div>
+                    <div class="card-content">
+                        <h3><a href="#">我国自主研发操作系统发布，打破国外垄断</a> <span class="hot-tag">头条</span></h3>
+                        <p>完全自主知识产权的"鸿蒙"操作系统正式发布，在安全性、兼容性等方面具有显著优势...</p>
+                        <div class="news-meta">
+                            <span><i class="far fa-clock"></i> 2023-06-24</span>
+                            <span><i class="far fa-eye"></i> 6.8万</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 体育新闻 -->
+        <div id="sports" class="news-category">
+            <div class="category-header">
+                <h2>体育新闻</h2>
+            </div>
+            <div class="news-grid">
+                <div class="news-card">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1575361204480-aadea25e6e68?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="新闻图片">
+                    </div>
+                    <div class="card-content">
+                        <h3><a href="#">世界杯预选赛：中国队3-0战胜日本队</a> <span class="hot-tag">热点</span></h3>
+                        <p>在昨晚举行的世界杯预选赛中，中国男足以3-0大胜日本队，取得小组赛关键胜利，晋级形势大好...</p>
+                        <div class="news-meta">
+                            <span><i class="far fa-clock"></i> 2023-06-29</span>
+                            <span><i class="far fa-eye"></i> 7.2万</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="news-card">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1541252260730-0412e8e2108e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="新闻图片">
+                    </div>
+                    <div class="card-content">
+                        <h3><a href="#">中国女排3-0战胜美国队，世界联赛豪取六连胜</a></h3>
+                        <p>在世界女排联赛中，中国女排以3-0完胜美国队，取得六连胜，晋级决赛阶段形势乐观...</p>
+                        <div class="news-meta">
+                            <span><i class="far fa-clock"></i> 2023-06-28</span>
+                            <span><i class="far fa-eye"></i> 5.4万</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="news-card">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1547347298-4074fc3086f0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="新闻图片">
+                    </div>
+                    <div class="card-content">
+                        <h3><a href="#">温网：中国金花张帅晋级女单第二轮</a></h3>
+                        <p>在温布尔登网球公开赛女单首轮比赛中，中国选手张帅直落两盘击败对手，成功晋级第二轮...</p>
+                        <div class="news-meta">
+                            <span><i class="far fa-clock"></i> 2023-06-27</span>
+                            <span><i class="far fa-eye"></i> 4.3万</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="news-card">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="新闻图片">
+                    </div>
+                    <div class="card-content">
+                        <h3><a href="#">杭州亚运会电子竞技项目参赛名单公布</a> <span class="hot-tag">热点</span></h3>
+                        <p>杭州亚运会电子竞技项目中国代表队名单正式公布，将参加英雄联盟、王者荣耀等6个项目的角逐...</p>
+                        <div class="news-meta">
+                            <span><i class="far fa-clock"></i> 2023-06-26</span>
+                            <span><i class="far fa-eye"></i> 4.0万</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="news-card">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1518604666860-9ed391f76460?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="新闻图片">
+                    </div>
+                    <div class="card-content">
+                        <h3><a href="#">CBA选秀大会落幕，23名球员被选中创新高</a></h3>
+                        <p>2023年CBA选秀大会在青岛举行，共有23名球员被各俱乐部选中，创下选秀大会历史新高...</p>
+                        <div class="news-meta">
+                            <span><i class="far fa-clock"></i> 2023-06-25</span>
+                            <span><i class="far fa-eye"></i> 3.6万</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="news-card">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1517649763962-0c623066013b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="新闻图片">
+                    </div>
+                    <div class="card-content">
+                        <h3><a href="#">国际奥委会宣布2028洛杉矶奥运会新增五个项目</a> <span class="hot-tag">头条</span></h3>
+                        <p>国际奥委会宣布2028年洛杉矶奥运会将新增棒垒球、板球、棍网球、壁球和腰旗橄榄球五个大项...</p>
+                        <div class="news-meta">
+                            <span><i class="far fa-clock"></i> 2023-06-24</span>
+                            <span><i class="far fa-eye"></i> 5.1万</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 娱乐新闻 -->
+        <div id="entertainment" class="news-category">
+            <div class="category-header">
+                <h2>娱乐新闻</h2>
+            </div>
+            <div class="news-grid">
+                <div class="news-card">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1572059002053-8cc5ad2f4a38?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="新闻图片">
+                    </div>
+                    <div class="card-content">
+                        <h3><a href="#">好莱坞巨星宣布息影，将专注慈善事业</a> <span class="hot-tag">热点</span></h3>
+                        <p>奥斯卡影帝汤姆·汉克斯在个人社交媒体宣布将退出影坛，未来将专注于全球儿童教育慈善项目...</p>
+                        <div class="news-meta">
+                            <span><i class="far fa-clock"></i> 2023-06-29</span>
+                            <span><i class="far fa-eye"></i> 6.3万</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="news-card">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="新闻图片">
+                    </div>
+                    <div class="card-content">
+                        <h3><a href="#">第35届金鸡奖提名公布，多部国产影片入围</a></h3>
+                        <p>第35届中国电影金鸡奖提名名单公布，《长津湖》《流浪地球2》等影片入围多个奖项...</p>
+                        <div class="news-meta">
+                            <span><i class="far fa-clock"></i> 2023-06-28</span>
+                            <span><i class="far fa-eye"></i> 4.8万</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="news-card">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="新闻图片">
+                    </div>
+                    <div class="card-content">
+                        <h3><a href="#">周杰伦世界巡回演唱会门票10分钟售罄</a></h3>
+                        <p>周杰伦2023世界巡回演唱会门票今日开售，10分钟内所有场次门票全部售罄，创下票房新纪录...</p>
+                        <div class="news-meta">
+                            <span><i class="far fa-clock"></i> 2023-06-27</span>
+                            <span><i class="far fa-eye"></i> 4.5万</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="news-card">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="新闻图片">
+                    </div>
+                    <div class="card-content">
+                        <h3><a href="#">国产科幻剧《三体》获国际艾美奖提名</a> <span class="hot-tag">热点</span></h3>
+                        <p>根据刘慈欣同名小说改编的国产科幻剧《三体》获得国际艾美奖最佳电视剧提名，创下中国电视剧新纪录...</p>
+                        <div class="news-meta">
+                            <span><i class="far fa-clock"></i> 2023-06-26</span>
+                            <span><i class="far fa-eye"></i> 4.2万</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="news-card">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="新闻图片">
+                    </div>
+                    <div class="card-content">
+                        <h3><a href="#">第76届戛纳电影节开幕，多部华语片入围</a></h3>
+                        <p>第76届戛纳电影节在法国开幕，共有4部华语片入围主竞赛单元，创下近年最好成绩...</p>
+                        <div class="news-meta">
+                            <span><i class="far fa-clock"></i> 2023-06-25</span>
+                            <span><i class="far fa-eye"></i> 3.9万</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="news-card">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="新闻图片">
+                    </div>
+                    <div class="card-content">
+                        <h3><a href="#">Taylor Swift创纪录获13项格莱美提名</a> <span class="hot-tag">头条</span></h3>
+                        <p>第65届格莱美奖提名揭晓，Taylor Swift凭借新专辑获得13项提名，成为格莱美历史上单届提名最多艺人...</p>
+                        <div class="news-meta">
+                            <span><i class="far fa-clock"></i> 2023-06-24</span>
+                            <span><i class="far fa-eye"></i> 7.5万</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 健康新闻 -->
+        <div id="health" class="news-category">
+            <div class="category-header">
+                <h2>健康新闻</h2>
+            </div>
+            <div class="news-grid">
+                <div class="news-card">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="新闻图片">
+                    </div>
+                    <div class="card-content">
+                        <h3><a href="#">研究发现：每天步行30分钟可延长寿命</a> <span class="hot-tag">热点</span></h3>
+                        <p>国际医学期刊发表最新研究，每天坚持30分钟中等强度步行，可显著降低心血管疾病风险，延长寿命5-7年...</p>
+                        <div class="news-meta">
+                            <span><i class="far fa-clock"></i> 2023-06-29</span>
+                            <span><i class="far fa-eye"></i> 5.7万</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="news-card">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="新闻图片">
+                    </div>
+                    <div class="card-content">
+                        <h3><a href="#">我国自主研发新冠口服药获批上市</a></h3>
+                        <p>国家药监局批准我国自主研发的新冠口服药"阿兹夫定"上市，临床试验显示可显著降低重症风险...</p>
+                        <div class="news-meta">
+                            <span><i class="far fa-clock"></i> 2023-06-28</span>
+                            <span><i class="far fa-eye"></i> 4.6万</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="news-card">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="新闻图片">
+                    </div>
+                    <div class="card-content">
+                        <h3><a href="#">专家提醒：夏季高温谨防热射病</a></h3>
+                        <p>随着高温天气持续，多地出现热射病病例。专家提醒公众注意防暑降温，避免长时间高温户外活动...</p>
+                        <div class="news-meta">
+                            <span><i class="far fa-clock"></i> 2023-06-27</span>
+                            <span><i class="far fa-eye"></i> 4.1万</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="news-card">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1581595219319-5b9b3b9d5d7b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="新闻图片">
+                    </div>
+                    <div class="card-content">
+                        <h3><a href="#">我国科学家发现阿尔茨海默病新靶点</a> <span class="hot-tag">热点</span></h3>
+                        <p>我国科学家在阿尔茨海默病研究中取得突破，发现新的治疗靶点，为开发新药提供方向...</p>
+                        <div class="news-meta">
+                            <span><i class="far fa-clock"></i> 2023-06-26</span>
+                            <span><i class="far fa-eye"></i> 3.8万</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="news-card">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="新闻图片">
+                    </div>
+                    <div class="card-content">
+                        <h3><a href="#">国家医保局：将逐步扩大医保药品目录</a></h3>
+                        <p>国家医保局表示，将进一步扩大医保药品目录范围，将更多救命救急的好药纳入医保支付...</p>
+                        <div class="news-meta">
+                            <span><i class="far fa-clock"></i> 2023-06-25</span>
+                            <span><i class="far fa-eye"></i> 3.5万</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="news-card">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="新闻图片">
+                    </div>
+                    <div class="card-content">
+                        <h3><a href="#">世界卫生组织发布新版健康饮食指南</a> <span class="hot-tag">头条</span></h3>
+                        <p>世界卫生组织发布最新健康饮食指南，建议减少盐、糖和脂肪摄入，增加全谷物、水果蔬菜摄入...</p>
+                        <div class="news-meta">
+                            <span><i class="far fa-clock"></i> 2023-06-24</span>
+                            <span><i class="far fa-eye"></i> 6.2万</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
     <!-- 页脚 -->
     <footer>
-        <div class="container">
-          
-            
+        <div class="footer-container">
+            <div class="footer-links">
+                <a href="#">关于河北邢台</a>
+                <a href="#">版权声明</a>
+                <a href="#">联系我们</a>
+                <a href="#">广告服务</a>
+                <a href="#">人员招聘</a>
+                <a href="#">河北邢台邮箱</a>
+                <a href="#">河北邢台网版权所有</a>
+            </div>
             <div class="copyright">
-                <p>&copy; 河北邢台新闻网</p>
+                <p>违法和不良信息举报电话: 12377 | 京ICP证060535号 | 京ICP备00000001号 | 京公网安备00000000000000号</p>
+                <p>信息网络传播视听节目许可证0100000号 | 中国互联网视听节目服务自律公约</p>
+                <p>河北邢台网 版权所有</p>
             </div>
         </div>
     </footer>
-
+    
     <script>
-        // 页面导航功能
-        document.addEventListener('DOMContentLoaded', function() {
-            // 获取所有导航链接
-            const navLinks = document.querySelectorAll('.nav-link, .region-card, .footer-section a[data-target]');
-            
-            // 添加点击事件监听器
-            navLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    
-                    // 获取目标区域
-                    const targetId = this.getAttribute('data-target');
-                    if (!targetId) return;
-                    
-                    // 更新导航激活状态
-                    document.querySelectorAll('.nav-link').forEach(nav => {
-                        nav.classList.remove('active');
-                    });
-                    
-                    if (this.classList.contains('nav-link')) {
-                        this.classList.add('active');
-                    } else {
-                        // 对于地区卡片，找到对应的导航链接并激活
-                        const correspondingNav = document.querySelector(`.nav-link[data-target="${targetId}"]`);
-                        if (correspondingNav) {
-                            correspondingNav.classList.add('active');
-                        }
-                    }
-                    
-                    // 隐藏所有内容区域
-                    document.querySelectorAll('.content-section').forEach(section => {
-                        section.classList.remove('active');
-                    });
-                    
-                    // 显示目标区域
-                    document.getElementById(targetId).classList.add('active');
-                    
-                    // 滚动到顶部
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                });
-            });
-            
-            // 首页CTA按钮点击事件
-            document.querySelector('.cta-button').addEventListener('click', function(e) {
+        // 导航栏切换功能
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
                 e.preventDefault();
                 
-                // 滚动到地区导航
-                document.querySelector('.region-nav').scrollIntoView({ 
-                    behavior: 'smooth' 
+                // 移除所有活动状态
+                document.querySelectorAll('.nav-link').forEach(item => {
+                    item.classList.remove('active');
                 });
+                
+                // 添加当前活动状态
+                this.classList.add('active');
+                
+                // 获取目标内容ID
+                const targetId = this.getAttribute('data-target');
+                
+                // 隐藏所有内容区域
+                document.querySelectorAll('.content-section, .news-category').forEach(section => {
+                    section.style.display = 'none';
+                });
+                
+                // 显示目标内容区域
+                if(targetId === 'home') {
+                    document.getElementById('home').style.display = 'block';
+                } else {
+                    document.getElementById(targetId).style.display = 'block';
+                }
+                
+                // 滚动到页面顶部
+                window.scrollTo(0, 0);
             });
         });
+        
+        // 设置当前日期
+        const now = new Date();
+        const options = { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' };
+        const dateString = now.toLocaleDateString('zh-CN', options);
+        
+        // 导航栏悬停效果
+        const navLinks = document.querySelectorAll('.nav-links li a');
+        navLinks.forEach(link => {
+            link.addEventListener('mouseenter', function() {
+                if(!this.classList.contains('active')) {
+                    this.style.backgroundColor = '#b30000';
+                }
+            });
+            
+            link.addEventListener('mouseleave', function() {
+                if(!this.classList.contains('active')) {
+                    this.style.backgroundColor = '';
+                }
+            });
+        });
+        
+        // 初始化页面显示首页
+        document.getElementById('home').style.display = 'block';
     </script>
 </body>
 </html>
